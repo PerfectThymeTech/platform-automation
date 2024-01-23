@@ -1,0 +1,25 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "Cmplnt-Function",
+  "scope": null,
+  "location": "${default_location}",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "displayName": "Compliant Azure Function Policy Assignment",
+    "description": "This policy assignment ensures compliant Azure Functions.",
+    "enforcementMode": "Disabled",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "App Service"
+    },
+    "nonComplianceMessages": [],
+    "notScopes": [],
+    "overrides": [],
+    "resourceSelectors": [],
+    "parameters": {},
+    "policyDefinitionId": "${scope_id_root}/providers/Microsoft.Authorization/policySetDefinitions/Cmplnt-Function"
+  }
+}

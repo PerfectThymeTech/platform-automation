@@ -1,0 +1,171 @@
+{
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "name": "Dine-Diagnostics-StorageTable",
+  "properties": {
+    "displayName": "Configure Storage Table Services to have diagnostics enabled to Log Analytics workspace",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "description": "To ensure the operations performed against your Storage Table Services are captured, Storage Table Services should have diagnostics enabled. If diagnostics is not enabled, this policy will configure events to flow to the specified Log Analytics workspace.",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Storage"
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+      },
+      "profileName": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Profile name",
+          "description": "The diagnostic settings profile name"
+        },
+        "defaultValue": "setByPolicy"
+      },
+      "logAnalyticsWorkspaceId": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Log Analytics Workspace ID",
+          "description": "Select the Log Analytics workspace from the dropdown list",
+          "strongType": "omsWorkspace",
+          "assignPermissions": true
+        }
+      },
+      "metricsEnabled": {
+        "type": "Boolean",
+        "metadata": {
+          "displayName": "Enable metrics",
+          "description": "Whether to enable metrics stream to the Log Analytics workspace - True or False"
+        },
+        "allowedValues": [
+          true,
+          false
+        ],
+        "defaultValue": true
+      }
+    },
+    "policyRule": {
+      "if": {
+        "field": "type",
+        "equals": "Microsoft.Storage/storageAccounts/tableServices"
+      },
+      "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+          "type": "Microsoft.Insights/diagnosticSettings",
+          "evaluationDelay": "AfterProvisioningSuccess",
+          "name": "[parameters('profileName')]",
+          "existenceCondition": {
+            "allOf": [
+              {
+                "count": {
+                  "field": "Microsoft.Insights/diagnosticSettings/logs[*]",
+                  "where": {
+                    "field": "Microsoft.Insights/diagnosticSettings/logs[*].enabled",
+                    "equals": "true"
+                  }
+                },
+                "equals": 3
+              },
+              {
+                "field": "Microsoft.Insights/diagnosticSettings/metrics.enabled",
+                "equals": "[parameters('metricsEnabled')]"
+              },
+              {
+                "field": "Microsoft.Insights/diagnosticSettings/workspaceId",
+                "equals": "[parameters('logAnalyticsWorkspaceId')]"
+              }
+            ]
+          },
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+            "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa"
+          ],
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "resourceName": {
+                    "type": "string"
+                  },
+                  "location": {
+                    "type": "string"
+                  },
+                  "logAnalyticsWorkspaceId": {
+                    "type": "string"
+                  },
+                  "metricsEnabled": {
+                    "type": "bool"
+                  },
+                  "profileName": {
+                    "type": "string"
+                  }
+                },
+                "resources": [
+                  {
+                    "type": "Microsoft.Storage/storageAccounts/tableServices/providers/diagnosticSettings",
+                    "apiVersion": "2021-05-01-preview",
+                    "name": "[concat(parameters('resourceName'), '/', 'Microsoft.Insights/', parameters('profileName'))]",
+                    "location": "[parameters('location')]",
+                    "properties": {
+                      "workspaceId": "[parameters('logAnalyticsWorkspaceId')]",
+                      "logs": [
+                        {
+                          "category": "StorageRead",
+                          "enabled": true
+                        },
+                        {
+                          "category": "StorageWrite",
+                          "enabled": true
+                        },
+                        {
+                          "category": "StorageDelete",
+                          "enabled": true
+                        }
+                      ],
+                      "metrics": [
+                        {
+                          "category": "AllMetrics",
+                          "enabled": "[parameters('metricsEnabled')]"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              },
+              "parameters": {
+                "location": {
+                  "value": "[field('location')]"
+                },
+                "resourceName": {
+                  "value": "[field('fullName')]"
+                },
+                "logAnalyticsWorkspaceId": {
+                  "value": "[parameters('logAnalyticsWorkspaceId')]"
+                },
+                "metricsEnabled": {
+                  "value": "[parameters('metricsEnabled')]"
+                },
+                "profileName": {
+                  "value": "[parameters('profileName')]"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

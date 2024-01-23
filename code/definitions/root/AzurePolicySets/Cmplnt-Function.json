@@ -1,0 +1,350 @@
+{
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "apiVersion": "2021-06-01",
+  "name": "Cmplnt-Function",
+  "scope": null,
+  "properties": {
+    "displayName": "Compliant Function Policy Set",
+    "description": "This policy set ensures compliant Function.",
+    "policyType": "Custom",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "App Service"
+    },
+    "policyDefinitionGroups": [
+      {
+        "name": "Encryption",
+        "category": "Data Protection",
+        "displayName": "Ensure Functions are using secure encryption",
+        "description": "Policy to ensure Functions are using secure encryption"
+      },
+      {
+        "name": "Network",
+        "category": "Network Security",
+        "displayName": "Ensure Functions are not accessible over the public internet",
+        "description": "Policy to ensure Functions are not accessible over the public internet"
+      },
+      {
+        "name": "Identity",
+        "category": "Identity Management",
+        "displayName": "Ensure usage of centralized identity and auhtorization system for Functions",
+        "description": "Policy to ensure Functions are not using local authorization"
+      },
+      {
+        "name": "Logging",
+        "category": "Logging and Threat Detection",
+        "displayName": "Ensure Functions are logging all events to Log Analytics",
+        "description": "Policy to ensure Functions are logging all events to Log Analytics workspace"
+      },
+      {
+        "name": "Features",
+        "category": "Features",
+        "displayName": "Ensure Functions are compliant by turning off certain functionality",
+        "description": "Policy to ensure Functions are compliant by turning off certain functionality"
+      }
+    ],
+    "parameters": {},
+    "policyDefinitions": [
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/fa98f1b1-1f56-4179-9faf-93ad82f3458f",
+        "policyDefinitionReferenceId": "fa98f1b1-1f56-4179-9faf-93ad82f3458f",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/fa3a6357-c6d6-4120-8429-855577ec0063",
+        "policyDefinitionReferenceId": "fa3a6357-c6d6-4120-8429-855577ec0063",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f9d614c5-c173-4d56-95a7-b4437057d193",
+        "policyDefinitionReferenceId": "f9d614c5-c173-4d56-95a7-b4437057d193",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f493116f-3b7f-4ab3-bf80-0c2af35e46c2",
+        "policyDefinitionReferenceId": "f493116f-3b7f-4ab3-bf80-0c2af35e46c2",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ec71c0bc-6a45-4b1f-9587-80dc83e6898c",
+        "policyDefinitionReferenceId": "ec71c0bc-6a45-4b1f-9587-80dc83e6898c",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Identity"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e2c1c086-2d84-4019-bff3-c44ccd95113c",
+        "policyDefinitionReferenceId": "e2c1c086-2d84-4019-bff3-c44ccd95113c",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e1a09430-221d-4d4c-a337-1edb5a1fa9bb",
+        "policyDefinitionReferenceId": "e1a09430-221d-4d4c-a337-1edb5a1fa9bb",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/deb528de-8f89-4101-881c-595899253102",
+        "policyDefinitionReferenceId": "deb528de-8f89-4101-881c-595899253102",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cd794351-e536-40f4-9750-503a463d8cad",
+        "policyDefinitionReferenceId": "cd794351-e536-40f4-9750-503a463d8cad",
+        "parameters": {
+          "effect": {
+            "value": "Modify"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a1a22235-dd10-4062-bd55-7d62778f41b0",
+        "policyDefinitionReferenceId": "a1a22235-dd10-4062-bd55-7d62778f41b0",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a096cbd0-4693-432f-9374-682f485f23f3",
+        "policyDefinitionReferenceId": "a096cbd0-4693-432f-9374-682f485f23f3",
+        "parameters": {
+          "effect": {
+            "value": "Modify"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/969ac98b-88a8-449f-883c-2e9adb123127",
+        "policyDefinitionReferenceId": "969ac98b-88a8-449f-883c-2e9adb123127",
+        "parameters": {
+          "effect": {
+            "value": "Deny"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/89691ef9-8c50-49a8-8950-9c7fba41699e",
+        "policyDefinitionReferenceId": "89691ef9-8c50-49a8-8950-9c7fba41699e",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Features"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/70adbb40-e092-42d5-a6f8-71c540a5efdb",
+        "policyDefinitionReferenceId": "70adbb40-e092-42d5-a6f8-71c540a5efdb",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Features"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6d555dd1-86f2-4f1c-8ed7-5abae7c6cbab",
+        "policyDefinitionReferenceId": "6d555dd1-86f2-4f1c-8ed7-5abae7c6cbab",
+        "parameters": {
+          "effect": {
+            "value": "Deny"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5e5dbe3f-2702-4ffc-8b1e-0cae008a5c71",
+        "policyDefinitionReferenceId": "5e5dbe3f-2702-4ffc-8b1e-0cae008a5c71",
+        "parameters": {
+          "effect": {
+            "value": "Deny"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/399b2637-a50f-4f95-96f8-3a145476eb15",
+        "policyDefinitionReferenceId": "399b2637-a50f-4f95-96f8-3a145476eb15",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/25a5046c-c423-4805-9235-e844ae9ef49b",
+        "policyDefinitionReferenceId": "25a5046c-c423-4805-9235-e844ae9ef49b",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Features"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/242222f3-4985-4e99-b5ef-086d6a6cb01c",
+        "policyDefinitionReferenceId": "242222f3-4985-4e99-b5ef-086d6a6cb01c",
+        "parameters": {
+          "effect": {
+            "value": "Modify"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1f01f1c7-539c-49b5-9ef4-d4ffa37d22e0",
+        "policyDefinitionReferenceId": "1f01f1c7-539c-49b5-9ef4-d4ffa37d22e0",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/11c82d0c-db9f-4d7b-97c5-f3f9aa957da2",
+        "policyDefinitionReferenceId": "11c82d0c-db9f-4d7b-97c5-f3f9aa957da2",
+        "parameters": {
+          "effect": {
+            "value": "Deny"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0e60b895-3786-45da-8377-9c6b4b6ac5f9",
+        "policyDefinitionReferenceId": "0e60b895-3786-45da-8377-9c6b4b6ac5f9",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Features"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0da106f2-4ca3-48e8-bc85-c638fe6aea8f",
+        "policyDefinitionReferenceId": "0da106f2-4ca3-48e8-bc85-c638fe6aea8f",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Identity"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/08cf2974-d178-48a0-b26d-f6b8e555748b",
+        "policyDefinitionReferenceId": "08cf2974-d178-48a0-b26d-f6b8e555748b",
+        "parameters": {
+          "effect": {
+            "value": "Modify"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0820b7b9-23aa-4725-a1ce-ae4558f718e5",
+        "policyDefinitionReferenceId": "0820b7b9-23aa-4725-a1ce-ae4558f718e5",
+        "parameters": {
+          "effect": {
+            "value": "AuditIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      }
+    ]
+  }
+}

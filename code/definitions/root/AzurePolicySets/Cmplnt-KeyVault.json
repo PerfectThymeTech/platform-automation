@@ -1,0 +1,116 @@
+{
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "apiVersion": "2021-06-01",
+  "name": "Cmplnt-KeyVault",
+  "scope": null,
+  "properties": {
+    "displayName": "Compliant Key Vault Policy Set",
+    "description": "This policy set ensures compliant Key Vaults.",
+    "policyType": "Custom",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Key Vault"
+    },
+    "policyDefinitionGroups": [
+      {
+        "name": "Encryption",
+        "category": "Data Protection",
+        "displayName": "Ensure Key Vault is using secure encryption",
+        "description": "Policy to ensure Key Vault is using secure encryption"
+      },
+      {
+        "name": "Network",
+        "category": "Network Security",
+        "displayName": "Ensure Key Vault is not accessible over the public internet",
+        "description": "Policy to ensure Key Vault is not accessible over the public internet"
+      },
+      {
+        "name": "Identity",
+        "category": "Identity Management",
+        "displayName": "Ensure usage of centralized identity and auhtorization system for Key Vault",
+        "description": "Policy to ensure Key Vault is not using local authorization"
+      },
+      {
+        "name": "Logging",
+        "category": "Logging and Threat Detection",
+        "displayName": "Ensure Key Vault is logging all events to Log Analytics",
+        "description": "Policy to ensure Key Vault is logging all events to Log Analytics workspace"
+      }
+    ],
+    "parameters": {},
+    "policyDefinitions": [
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/405c5871-3e91-4644-8a63-58e19d68ff5b",
+        "policyDefinitionReferenceId": "405c5871-3e91-4644-8a63-58e19d68ff5b",
+        "parameters": {
+          "effect": {
+            "value": "Deny"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ac673a9a-f77d-4846-b2d8-a57f8e1c01dc",
+        "policyDefinitionReferenceId": "ac673a9a-f77d-4846-b2d8-a57f8e1c01dc",
+        "parameters": {
+          "effect": {
+            "value": "Modify"
+          }
+        },
+        "groupNames": [
+          "Network"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/12d4fa5e-1f9f-4c21-97a9-b99b3c6611b5",
+        "policyDefinitionReferenceId": "12d4fa5e-1f9f-4c21-97a9-b99b3c6611b5",
+        "parameters": {
+          "effect": {
+            "value": "Deny"
+          }
+        },
+        "groupNames": [
+          "Identity"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0b60c0b2-2dc2-4e1c-b5c9-abbed971de53",
+        "policyDefinitionReferenceId": "0b60c0b2-2dc2-4e1c-b5c9-abbed971de53",
+        "parameters": {
+          "effect": {
+            "value": "Deny"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d",
+        "policyDefinitionReferenceId": "1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d",
+        "parameters": {
+          "effect": {
+            "value": "Deny"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/75262d3e-ba4a-4f43-85f8-9f72c090e5e3",
+        "policyDefinitionReferenceId": "75262d3e-ba4a-4f43-85f8-9f72c090e5e3",
+        "parameters": {
+          "effect": {
+            "value": "Deny"
+          }
+        },
+        "groupNames": [
+          "Encryption"
+        ]
+      }
+    ]
+  }
+}

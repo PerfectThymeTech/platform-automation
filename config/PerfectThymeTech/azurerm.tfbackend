@@ -1,0 +1,7 @@
+environment          = "public"
+subscription_id      = ""
+resource_group_name  = ""
+storage_account_name = ""
+container_name       = ""
+key                  = "terraform.tfstate"
+use_azuread_auth     = true

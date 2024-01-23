@@ -1,0 +1,25 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "Cmplnt-KeyVault",
+  "scope": null,
+  "location": "${default_location}",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "displayName": "Compliant Key Vault Policy Assignment",
+    "description": "This policy assignment ensures compliant Key Vaults.",
+    "enforcementMode": "Disabled",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Key Vault"
+    },
+    "nonComplianceMessages": [],
+    "notScopes": [],
+    "overrides": [],
+    "resourceSelectors": [],
+    "parameters": {},
+    "policyDefinitionId": "${scope_id_root}/providers/Microsoft.Authorization/policySetDefinitions/Cmplnt-KeyVault"
+  }
+}

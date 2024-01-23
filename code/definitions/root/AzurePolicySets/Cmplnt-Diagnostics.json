@@ -1,0 +1,292 @@
+{
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "apiVersion": "2021-06-01",
+  "name": "Cmplnt-Diagnostics",
+  "scope": null,
+  "properties": {
+    "displayName": "Compliant Diagnostics Policy Set",
+    "description": "This policy set ensures compliant Diagnostics.",
+    "policyType": "Custom",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Logging"
+    },
+    "policyDefinitionGroups": [
+      {
+        "name": "Encryption",
+        "category": "Data Protection",
+        "displayName": "Ensure Disgnostics is using secure encryption",
+        "description": "Policy to ensure Disgnostics is using secure encryption"
+      },
+      {
+        "name": "Network",
+        "category": "Network Security",
+        "displayName": "Ensure Disgnostics is not accessible over the public internet",
+        "description": "Policy to ensure Disgnostics is not accessible over the public internet"
+      },
+      {
+        "name": "Identity",
+        "category": "Identity Management",
+        "displayName": "Ensure usage of centralized identity and auhtorization system for Disgnostics",
+        "description": "Policy to ensure Disgnostics is not using local authorization"
+      },
+      {
+        "name": "Logging",
+        "category": "Logging and Threat Detection",
+        "displayName": "Ensure Disgnostics is logging all events to Log Analytics",
+        "description": "Policy to ensure Disgnostics is logging all events to Log Analytics workspace"
+      }
+    ],
+    "parameters": {
+      "logAnalytics": {
+        "type": "string",
+        "defaultValue": ""
+      }
+    },
+    "policyDefinitions": [
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Diagnostics-KeyVault",
+        "policyDefinitionReferenceId": "Dine-Diagnostics-KeyVault",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          },
+          "profileName": {
+            "value": "setbypolicy"
+          },
+          "logAnalyticsWorkspaceId": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "metricsEnabled": {
+            "value": true
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      },
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Diagnostics-Storage",
+        "policyDefinitionReferenceId": "Dine-Diagnostics-Storage",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          },
+          "profileName": {
+            "value": "setbypolicy"
+          },
+          "logAnalyticsWorkspaceId": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "metricsEnabled": {
+            "value": true
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      },
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Diagnostics-StorageFile",
+        "policyDefinitionReferenceId": "Dine-Diagnostics-StorageFile",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          },
+          "profileName": {
+            "value": "setbypolicy"
+          },
+          "logAnalyticsWorkspaceId": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "metricsEnabled": {
+            "value": true
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      },
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Diagnostics-StorageTable",
+        "policyDefinitionReferenceId": "Dine-Diagnostics-StorageTable",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          },
+          "profileName": {
+            "value": "setbypolicy"
+          },
+          "logAnalyticsWorkspaceId": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "metricsEnabled": {
+            "value": true
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      },
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Diagnostics-StorageBlob",
+        "policyDefinitionReferenceId": "Dine-Diagnostics-StorageBlob",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          },
+          "profileName": {
+            "value": "setbypolicy"
+          },
+          "logAnalyticsWorkspaceId": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "metricsEnabled": {
+            "value": true
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      },
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Diagnostics-StorageQueue",
+        "policyDefinitionReferenceId": "Dine-Diagnostics-StorageQueue",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          },
+          "profileName": {
+            "value": "setbypolicy"
+          },
+          "logAnalyticsWorkspaceId": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "metricsEnabled": {
+            "value": true
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      },
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Diagnostics-SynapseWorkspace",
+        "policyDefinitionReferenceId": "Dine-Diagnostics-SynapseWorkspace",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          },
+          "profileName": {
+            "value": "setbypolicy"
+          },
+          "logAnalyticsWorkspaceId": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "metricsEnabled": {
+            "value": true
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      },
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Diagnostics-SynapseSqlPool",
+        "policyDefinitionReferenceId": "Dine-Diagnostics-SynapseSqlPool",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          },
+          "profileName": {
+            "value": "setbypolicy"
+          },
+          "logAnalyticsWorkspaceId": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "metricsEnabled": {
+            "value": true
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      },
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Diagnostics-SynapseBigDataPool",
+        "policyDefinitionReferenceId": "Dine-Diagnostics-SynapseBigDataPool",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          },
+          "profileName": {
+            "value": "setbypolicy"
+          },
+          "logAnalyticsWorkspaceId": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "metricsEnabled": {
+            "value": true
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      },
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Diagnostics-SynapseKustoPool",
+        "policyDefinitionReferenceId": "Dine-Diagnostics-SynapseKustoPool",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          },
+          "profileName": {
+            "value": "setbypolicy"
+          },
+          "logAnalyticsWorkspaceId": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "metricsEnabled": {
+            "value": true
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      },
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Auditing-SynapseWorkspace",
+        "policyDefinitionReferenceId": "Dine-Auditing-SynapseWorkspace",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      },
+      {
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Dine-Diagnostics-Function",
+        "policyDefinitionReferenceId": "Dine-Diagnostics-Function",
+        "parameters": {
+          "effect": {
+            "value": "DeployIfNotExists"
+          },
+          "profileName": {
+            "value": "setbypolicy"
+          },
+          "logAnalyticsWorkspaceId": {
+            "value": "[parameters('logAnalytics')]"
+          },
+          "metricsEnabled": {
+            "value": true
+          }
+        },
+        "groupNames": [
+          "Logging"
+        ]
+      }
+    ]
+  }
+}
