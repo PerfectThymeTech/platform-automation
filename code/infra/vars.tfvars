@@ -1,7 +1,7 @@
-organization_name = "Contoso"
-location          = "westeurope"
+organization_name = "PerfectThymeTech"
+location          = "northeurope"
 environment       = "dev"
-prefix            = "cnts"
+prefix            = "ptt"
 tags              = {}
 custom_template_variables = {
   # General variables
