@@ -7,7 +7,7 @@ output "private_dns_zone_ids" {
   sensitive = false
 }
 
-output "azurerm_firewall" {
+output "azurerm_firewall_private_ip_address" {
   description = "Specifies the private IP address of the Azure Firewall."
   value       = azurerm_firewall.firewall.ip_configuration[0].private_ip_address
   sensitive   = false

@@ -4,7 +4,7 @@ resource "azurerm_route_table" "route_table_default" {
   resource_group_name = azurerm_resource_group.resource_group_hub.name
   tags                = var.tags
 
-  disable_bgp_route_propagation = false
+  bgp_route_propagation_enabled = true
   route {
     name                   = "default-firewall"
     address_prefix         = "0.0.0.0/0"
