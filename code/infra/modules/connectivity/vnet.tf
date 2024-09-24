@@ -26,7 +26,7 @@ resource "azurerm_subnet" "subnet_firewall" {
   address_prefixes = [
     tostring(cidrsubnet(var.vnet_address_range, 26 - tonumber(reverse(split("/", var.vnet_address_range))[0]), 1))
   ]
-  private_endpoint_network_policies_enabled     = true
+  private_endpoint_network_policies             = "Enabled"
   private_link_service_network_policies_enabled = true
   service_endpoint_policy_ids                   = []
   service_endpoints                             = []
@@ -40,7 +40,7 @@ resource "azurerm_subnet" "subnet_bastion" {
   address_prefixes = [
     tostring(cidrsubnet(var.vnet_address_range, 26 - tonumber(reverse(split("/", var.vnet_address_range))[0]), 2))
   ]
-  private_endpoint_network_policies_enabled     = true
+  private_endpoint_network_policies             = "Enabled"
   private_link_service_network_policies_enabled = true
   service_endpoint_policy_ids                   = []
   service_endpoints                             = []
@@ -64,7 +64,7 @@ resource "azurerm_subnet" "subnet_dns_inbound" {
   address_prefixes = [
     tostring(cidrsubnet(var.vnet_address_range, 26 - tonumber(reverse(split("/", var.vnet_address_range))[0]), 3))
   ]
-  private_endpoint_network_policies_enabled     = true
+  private_endpoint_network_policies             = "Enabled"
   private_link_service_network_policies_enabled = true
   service_endpoint_policy_ids                   = []
   service_endpoints                             = []
@@ -88,7 +88,7 @@ resource "azurerm_subnet" "subnet_dns_outbound" {
   address_prefixes = [
     tostring(cidrsubnet(var.vnet_address_range, 26 - tonumber(reverse(split("/", var.vnet_address_range))[0]), 4))
   ]
-  private_endpoint_network_policies_enabled     = true
+  private_endpoint_network_policies             = "Enabled"
   private_link_service_network_policies_enabled = true
   service_endpoint_policy_ids                   = []
   service_endpoints                             = []
@@ -112,7 +112,7 @@ resource "azurerm_subnet" "subnet_jumpbox" {
   address_prefixes = [
     tostring(cidrsubnet(var.vnet_address_range, 26 - tonumber(reverse(split("/", var.vnet_address_range))[0]), 5))
   ]
-  private_endpoint_network_policies_enabled     = true
+  private_endpoint_network_policies             = "Enabled"
   private_link_service_network_policies_enabled = true
   service_endpoint_policy_ids                   = []
   service_endpoints                             = []
@@ -136,7 +136,7 @@ resource "azurerm_subnet" "subnet_services" {
   address_prefixes = [
     tostring(cidrsubnet(var.vnet_address_range, 26 - tonumber(reverse(split("/", var.vnet_address_range))[0]), 6))
   ]
-  private_endpoint_network_policies_enabled     = true
+  private_endpoint_network_policies             = "Enabled"
   private_link_service_network_policies_enabled = true
   service_endpoint_policy_ids                   = []
   service_endpoints                             = []
