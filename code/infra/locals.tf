@@ -42,7 +42,7 @@ locals {
   # Merge variables
   template_variables = merge(
     local.scope_template_variables,
-    local.dns_template_variables,
+    # local.dns_template_variables,
     local.management_template_variables,
     var.custom_template_variables,
   )
