@@ -7,10 +7,10 @@ resource "azurerm_virtual_network" "virtual_network_hub" {
   address_space = [
     var.vnet_address_range
   ]
-  ddos_protection_plan {
-    enable = false
-    id     = ""
-  }
+  # ddos_protection_plan {
+  #   enable = false
+  #   id     = ""
+  # }
   dns_servers = []
   encryption {
     enforcement = "AllowUnencrypted"
