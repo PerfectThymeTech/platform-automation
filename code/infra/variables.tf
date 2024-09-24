@@ -1,3 +1,4 @@
+# General variables
 variable "organization_name" {
   description = "Specifies the name of the organization."
   type        = string
@@ -42,6 +43,7 @@ variable "tags" {
   default     = {}
 }
 
+# Platform variables
 variable "custom_template_variables" {
   description = "Specifies custom template variables to use for the deployment when loading the Azure resources from the library path."
   type        = map(string)
@@ -59,22 +61,24 @@ variable "connectivity_subscription_id" {
   }
 }
 
+variable "connectivity_hub" {
+  description = "Specifies the connectiviyt hub configuration."
+  type = object({
+    vnet_address_range = optional(string, "10.0.0.0/16")
+  })
+  sensitive = false
+  # validation {
+  #   condition     = var.connectivity_subscription_id == "" || length(regexall("^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$", var.connectivity_subscription_id)) > 0
+  #   error_message = "Please specify a valid connectivity hub config."
+  # }
+}
+
 variable "management_subscription_id" {
   description = "Specifies the id of the Azure subscription used for network platform resources."
   type        = string
   sensitive   = false
   validation {
     condition     = var.management_subscription_id == "" || length(regexall("^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$", var.management_subscription_id)) > 0
-    error_message = "Please specify a valid subscription id."
-  }
-}
-
-variable "identity_subscription_id" {
-  description = "Specifies the id of the Azure subscription used for network platform resources."
-  type        = string
-  sensitive   = false
-  validation {
-    condition     = var.identity_subscription_id == "" || length(regexall("^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$", var.identity_subscription_id)) > 0
     error_message = "Please specify a valid subscription id."
   }
 }

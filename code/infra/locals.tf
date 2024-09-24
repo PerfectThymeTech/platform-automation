@@ -1,7 +1,8 @@
 locals {
   prefix = "${lower(var.prefix)}-${var.environment}"
-  default_template_variables = {
-    # Scope variables
+
+  # Scope template variables
+  scope_template_variables = {
     scope_id_root          = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_root.name}"
     scope_id_platform      = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_platform.name}"
     scope_id_identity      = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_identity.name}"
@@ -13,6 +14,21 @@ locals {
     scope_id_playground    = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_playground.name}"
     scope_id_decomissioned = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_decomissioned.name}"
   }
+  # DNS template variables
+  dns_template_variables = {
+    for key, value in module.connectivity :
+    replace(key, ".", "_") => value
+  }
+  # Management variables
+  management_template_variables = {
+    log_analytics_workspace = module.management.log_analytics_workspace_id
+  }
+  # Merge variables
+  default_template_variables = merge(
+    local.scope_template_variables,
+    local.dns_template_variables,
+    local.management_template_variables,
+  )
 
   template_variables = merge(local.default_template_variables, var.custom_template_variables)
 }

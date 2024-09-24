@@ -17,9 +17,10 @@ resource "azurerm_management_group" "management_group_identity" {
   parent_management_group_id = azurerm_management_group.management_group_platform.id
   name                       = "${local.prefix}-identity"
   display_name               = "Identity"
-  subscription_ids = var.identity_subscription_id == "" ? null : [
-    var.identity_subscription_id
-  ]
+  subscription_ids           = null
+  # var.identity_subscription_id == "" ? null : [
+  #   var.identity_subscription_id
+  # ]
 }
 
 resource "azurerm_management_group" "management_group_management" {
