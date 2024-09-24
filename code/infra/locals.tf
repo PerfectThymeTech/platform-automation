@@ -1,6 +1,22 @@
 locals {
   prefix = "${lower(var.prefix)}-${var.environment}"
 
+  # Resource providers to register
+  resource_providers_to_register = [
+    "Microsoft.Authorization",
+    "Microsoft.EventGrid",
+    "Microsoft.Insights",
+    "Microsoft.KeyVault",
+    "Microsoft.Management",
+    "Microsoft.Network",
+    "Microsoft.OperationsManagement",
+    "Microsoft.OperationalInsights",
+    "Microsoft.Resources",
+    "Microsoft.Storage",
+    "Microsoft.Security",
+    "Microsoft.SecurityInsights",
+  ]
+
   # Scope template variables
   scope_template_variables = {
     scope_id_root          = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_root.name}"

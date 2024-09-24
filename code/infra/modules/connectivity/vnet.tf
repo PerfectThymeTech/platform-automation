@@ -4,7 +4,9 @@ resource "azurerm_virtual_network" "virtual_network_hub" {
   resource_group_name = azurerm_resource_group.resource_group_hub.name
   tags                = var.tags
 
-  address_space = var.vnet_address_range
+  address_space = [
+    var.vnet_address_range
+  ]
   ddos_protection_plan {
     enable = false
     id     = ""

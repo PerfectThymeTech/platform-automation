@@ -1,7 +1,7 @@
 output "private_dns_zone_ids" {
   description = "Specifies the map of the private dns zones."
   value = {
-    for item in local.local.private_dns_zone_names :
+    for item in local.private_dns_zone_names :
     item => azurerm_private_dns_zone.private_dns_zone[item].id
   }
   sensitive = false

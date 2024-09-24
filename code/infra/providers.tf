@@ -1,8 +1,9 @@
 provider "azurerm" {
-  disable_correlation_request_id = false
-  environment                    = "public"
-  skip_provider_registration     = false
-  storage_use_azuread            = true
+  disable_correlation_request_id  = false
+  environment                     = "public"
+  resource_provider_registrations = "none"
+  resource_providers_to_register  = local.resource_providers_to_register
+  storage_use_azuread             = true
   # use_oidc                       = true
 
   features {
@@ -32,12 +33,13 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  alias                          = "connectivity"
-  disable_correlation_request_id = false
-  environment                    = "public"
-  skip_provider_registration     = false
-  storage_use_azuread            = true
-  subscription_id                = var.connectivity_subscription_id
+  alias                           = "connectivity"
+  disable_correlation_request_id  = false
+  environment                     = "public"
+  resource_provider_registrations = "none"
+  resource_providers_to_register  = local.resource_providers_to_register
+  storage_use_azuread             = true
+  subscription_id                 = var.connectivity_subscription_id
   # use_oidc                       = true
 
   features {
@@ -67,12 +69,13 @@ provider "azurerm" {
 }
 
 provider "azurerm" {
-  alias                          = "management"
-  disable_correlation_request_id = false
-  environment                    = "public"
-  skip_provider_registration     = false
-  storage_use_azuread            = true
-  subscription_id                = var.management_subscription_id
+  alias                           = "management"
+  disable_correlation_request_id  = false
+  environment                     = "public"
+  resource_provider_registrations = "none"
+  resource_providers_to_register  = local.resource_providers_to_register
+  storage_use_azuread             = true
+  subscription_id                 = var.management_subscription_id
   # use_oidc                       = true
 
   features {

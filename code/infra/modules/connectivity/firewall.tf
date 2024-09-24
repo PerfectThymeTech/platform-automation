@@ -21,7 +21,7 @@ resource "azurerm_firewall_policy" "firewall_policy" {
     private_ranges = []
   }
   sku                  = "Basic"
-  private_ip_ranges    = []
+  private_ip_ranges    = null
   sql_redirect_allowed = false
   threat_intelligence_allowlist {
     fqdns        = []
