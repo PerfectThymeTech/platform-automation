@@ -1,5 +1,5 @@
 organization_name = "contoso"
-location          = "westeurope"
+location          = "northeurope"
 environment       = "dev"
 prefix            = "cnts"
 tags              = {}

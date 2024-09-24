@@ -39,7 +39,7 @@
         "value": "${private_dns_zone_id_privatelink_northeurope_kusto_windows_net}"
       },
       "privateDnsZoneIdKustoClusterWestEurope": {
-        "value": "${private_dns_zone_id_privatelink_westeurope_kusto_windows_net}"
+        "value": ""
       },
       "privateDnsZoneIdMachineLearningAzureMl": {
         "value": "${private_dns_zone_id_privatelink_api_azureml_ms}"
