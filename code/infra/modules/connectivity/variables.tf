@@ -62,8 +62,8 @@ variable "management_group_root_id" {
   description = "Specifies the id of the root management group id."
   type        = string
   sensitive   = false
-  validation {
-    condition     = length(split("/", var.log_analytics_workspace_id)) == 9 || var.log_analytics_workspace_id == ""
-    error_message = "Please specify a valid resource ID."
-  }
+  # validation {
+  #   condition     = length(split("/", var.management_group_root_id)) == 9
+  #   error_message = "Please specify a valid resource ID."
+  # }
 }
