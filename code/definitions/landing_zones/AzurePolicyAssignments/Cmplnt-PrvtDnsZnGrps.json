@@ -21,58 +21,58 @@
     "resourceSelectors": [],
     "parameters": {
       "privateDnsZoneIdAppServiceSites": {
-        "value": "${private_dns_zone_id_appservice_sites}"
+        "value": "${private_dns_zone_id_privatelink_azurewebsites_net}"
       },
       "privateDnsZoneIdCognitiveServicesAccount": {
-        "value": "${private_dns_zone_id_cognitive_services_account}"
+        "value": "${private_dns_zone_id_privatelink_cognitiveservices_azure_com}"
       },
       "privateDnsZoneIdOpenAiAccount": {
-        "value": "${private_dns_zone_id_open_ai_account}"
+        "value": "${private_dns_zone_id_privatelink_openai_azure_com}"
       },
       "privateDnsZoneIdContainerRegistryRegistry": {
-        "value": "${private_dns_zone_id_container_registry_registry}"
+        "value": "${private_dns_zone_id_privatelink_azurecr_io}"
       },
       "privateDnsZoneIdKeyVaultVault": {
-        "value": "${private_dns_zone_id_key_vault_vault}"
+        "value": "${private_dns_zone_id_privatelink_vaultcore_azure_net}"
       },
       "privateDnsZoneIdKustoClusterNorthEurope": {
-        "value": "${private_dns_zone_id_kusto_cluster_northeurope}"
+        "value": "${private_dns_zone_id_privatelink_northeurope_kusto_windows_net}"
       },
       "privateDnsZoneIdKustoClusterWestEurope": {
-        "value": "${private_dns_zone_id_kusto_cluster_westeurope}"
+        "value": "${private_dns_zone_id_privatelink_westeurope_kusto_windows_net}"
       },
       "privateDnsZoneIdMachineLearningAzureMl": {
-        "value": "${private_dns_zone_id_machine_learning_azure_ml}"
+        "value": "${private_dns_zone_id_privatelink_api_azureml_ms}"
       },
       "privateDnsZoneIdMachineLearningNotebooks": {
-        "value": "${private_dns_zone_id_machine_learning_notebooks}"
+        "value": "${private_dns_zone_id_privatelink_notebooks_azure_net}"
       },
       "privateDnsZoneIdSearchSearchService": {
-        "value": "${private_dns_zone_id_search_search_service}"
+        "value": "${private_dns_zone_id_privatelink_search_windows_net}"
       },
       "privateDnsZoneIdStorageBlob": {
-        "value": "${private_dns_zone_id_storage_blob}"
+        "value": "${private_dns_zone_id_privatelink_blob_core_windows_net}"
       },
       "privateDnsZoneIdStorageDfs": {
-        "value": "${private_dns_zone_id_storage_dfs}"
+        "value": "${private_dns_zone_id_privatelink_dfs_core_windows_net}"
       },
       "privateDnsZoneIdStorageFile": {
-        "value": "${private_dns_zone_id_storage_file}"
+        "value": "${private_dns_zone_id_privatelink_file_core_windows_net}"
       },
       "privateDnsZoneIdStorageQueue": {
-        "value": "${private_dns_zone_id_storage_queue}"
+        "value": "${private_dns_zone_id_privatelink_queue_core_windows_net}"
       },
       "privateDnsZoneIdStorageTable": {
-        "value": "${private_dns_zone_id_storage_table}"
+        "value": "${private_dns_zone_id_privatelink_table_core_windows_net}"
       },
       "privateDnsZoneIdStorageWeb": {
-        "value": "${private_dns_zone_id_storage_web}"
+        "value": "${private_dns_zone_id_privatelink_web_core_windows_net}"
       },
       "privateDnsZoneIdSynapseDev": {
-        "value": "${private_dns_zone_id_synapse_dev}"
+        "value": "${private_dns_zone_id_privatelink_dev_azuresynapse_net}"
       },
       "privateDnsZoneIdSynapseSql": {
-        "value": "${private_dns_zone_id_synapse_sql}"
+        "value": "${private_dns_zone_id_privatelink_sql_azuresynapse_net}"
       }
     },
     "policyDefinitionId": "${scope_id_root}/providers/Microsoft.Authorization/policySetDefinitions/Cmplnt-PrvtDnsZnGrps"

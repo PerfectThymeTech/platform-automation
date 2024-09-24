@@ -37,7 +37,7 @@ locals {
   }
   # Management variables
   management_template_variables = {
-    log_analytics_workspace = module.management.log_analytics_workspace_id
+    log_analytics_workspace_id = module.management.log_analytics_workspace_id
   }
   # Merge variables
   template_variables = merge(
