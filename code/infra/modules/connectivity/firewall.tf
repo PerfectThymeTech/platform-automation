@@ -12,19 +12,19 @@ resource "azurerm_firewall_policy" "firewall_policy" {
     ]
   }
   insights {
-    enabled = true
+    enabled                            = true
     default_log_analytics_workspace_id = var.log_analytics_workspace_id
-    retention_in_days = 30
+    retention_in_days                  = 30
   }
   intrusion_detection {
-    mode = "Alert"
+    mode           = "Alert"
     private_ranges = []
   }
-  sku = "Basic"
-  private_ip_ranges = []
+  sku                  = "Basic"
+  private_ip_ranges    = []
   sql_redirect_allowed = false
   threat_intelligence_allowlist {
-    fqdns = []
+    fqdns        = []
     ip_addresses = []
   }
   threat_intelligence_mode = "Alert"

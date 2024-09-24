@@ -47,3 +47,14 @@ variable "vnet_address_range" {
     error_message = "Please specify a valid cidr range."
   }
 }
+
+variable "log_analytics_workspace_id" {
+  type        = string
+  sensitive   = false
+  description = "Specifies the resource ID of a log analytics workspace, where the log data should be stored."
+  default     = ""
+  validation {
+    condition     = length(split("/", var.log_analytics_workspace_id)) == 9 || var.log_analytics_workspace_id == ""
+    error_message = "Please specify a valid resource ID."
+  }
+}
