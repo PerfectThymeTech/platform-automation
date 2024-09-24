@@ -50,7 +50,6 @@ locals {
     # Azure Virtual Desktop
     "privatelink-global.wvd.microsoft.com",
     "privatelink.wvd.microsoft.com",
-    "privatelink.wvd.microsoft.com",
 
     # Azure Kubernetes Service
     "privatelink.${var.location}.azmk8s.io",
