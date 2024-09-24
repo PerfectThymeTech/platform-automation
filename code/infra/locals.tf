@@ -32,19 +32,18 @@ locals {
   }
   # DNS template variables
   dns_template_variables = {
-    for key, value in module.connectivity :
-    replace(key, ".", "_") => value
+    for key, value in module.connectivity.private_dns_zone_ids :
+    "private_dns_zone_id_${replace(key, ".", "_")}" => value
   }
   # Management variables
   management_template_variables = {
     log_analytics_workspace = module.management.log_analytics_workspace_id
   }
   # Merge variables
-  default_template_variables = merge(
+  template_variables = merge(
     local.scope_template_variables,
     local.dns_template_variables,
     local.management_template_variables,
+    var.custom_template_variables,
   )
-
-  template_variables = merge(local.default_template_variables, var.custom_template_variables)
 }
