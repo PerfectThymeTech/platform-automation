@@ -31,11 +31,6 @@ on:
         required: true
         type: string
         description: "Specifies the subscription id of the deployment."
-      export_terraform_outputs:
-        required: false
-        type: boolean
-        default: false
-        description: "Specifies whether terraform outputs should be exported."
     secrets:
       CLIENT_ID:
         required: true
@@ -43,10 +38,6 @@ on:
       CLIENT_SECRET:
         required: true
         description: "Specifies the client secret."
-    outputs:
-      test:
-        description: "A sample value."
-        value: ${{ jobs.apply.outputs.test }}
 
 permissions:
   id-token: write
@@ -56,7 +47,7 @@ permissions:
 jobs:
   lint:
     name: Terraform Lint
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     continue-on-error: false
 
     steps:
@@ -102,10 +93,13 @@ jobs:
 
   plan:
     name: Terraform Plan
-    runs-on: [self-hosted]
+    runs-on: [ubuntu-latest]
     continue-on-error: false
     environment: ${{ inputs.environment }}
     needs: [lint]
+    concurrency:
+      group: terraform-${{ inputs.config }}-${{ inputs.environment }}
+      cancel-in-progress: false
 
     env:
       ARM_TENANT_ID: ${{ inputs.tenant_id }}
@@ -134,6 +128,13 @@ jobs:
       - name: Check Out Repository
         id: checkout_repository
         uses: actions/checkout@v4
+
+      # Login to Azure
+      - name: Azure Login
+        id: azure_login
+        uses: azure/login@v2
+        with:
+          creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ inputs.subscription_id }}","tenantId":"${{ inputs.tenant_id }}"}'
 
       # Terraform Init
       - name: Terraform Init
@@ -195,11 +196,14 @@ jobs:
 
   apply:
     name: Terraform Apply
-    runs-on: [self-hosted]
+    runs-on: [ubuntu-latest]
     continue-on-error: false
     environment: ${{ inputs.environment }}
-    if: github.event_name == 'push' || github.event_name == 'release'
+    # if: github.event_name == 'push' || github.event_name == 'release'
     needs: [plan]
+    concurrency:
+      group: terraform-${{ inputs.config }}-${{ inputs.environment }}
+      cancel-in-progress: false
 
     env:
       ARM_TENANT_ID: ${{ inputs.tenant_id }}
@@ -229,6 +233,13 @@ jobs:
         id: checkout_repository
         uses: actions/checkout@v4
 
+      # Login to Azure
+      - name: Azure Login
+        id: azure_login
+        uses: azure/login@v2
+        with:
+          creds: '{"clientId":"${{ secrets.CLIENT_ID }}","clientSecret":"${{ secrets.CLIENT_SECRET }}","subscriptionId":"${{ inputs.subscription_id }}","tenantId":"${{ inputs.tenant_id }}"}'
+
       # Terraform Init
       - name: Terraform Init
         working-directory: ${{ inputs.working_directory }}
@@ -244,12 +255,3 @@ jobs:
           terraform apply -var-file="../../config/${CONFIG}/vars.tfvars" -auto-approve -input=false
         env:
           CONFIG: ${{ inputs.config }}
-
-      # Terraform Export Outputs
-      - name: Terraform Export Outputs
-        id: terraform_outputs
-        working-directory: ${{ inputs.working_directory }}
-        if: inputs.export_terraform_outputs
-        run: |
-          test=$(terraform output -raw test)
-          echo "test=$test" >> "$GITHUB_OUTPUT"
