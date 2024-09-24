@@ -67,6 +67,7 @@ variable "connectivity_hub" {
     vnet_address_range = optional(string, "10.0.0.0/16")
   })
   sensitive = false
+  default   = {}
   # validation {
   #   condition     = var.connectivity_subscription_id == "" || length(regexall("^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$", var.connectivity_subscription_id)) > 0
   #   error_message = "Please specify a valid connectivity hub config."
