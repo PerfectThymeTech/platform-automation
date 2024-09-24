@@ -10,4 +10,5 @@ module "connectivity" {
   tags                       = var.tags
   vnet_address_range         = var.connectivity_hub.vnet_address_range
   log_analytics_workspace_id = module.management.log_analytics_workspace_id
+  management_group_root_id   = azurerm_management_group.management_group_root.id
 }

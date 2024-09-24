@@ -49,10 +49,19 @@ variable "vnet_address_range" {
 }
 
 variable "log_analytics_workspace_id" {
+  description = "Specifies the id of a log analytics workspace, where the log data should be stored."
   type        = string
   sensitive   = false
-  description = "Specifies the resource ID of a log analytics workspace, where the log data should be stored."
-  default     = ""
+  validation {
+    condition     = length(split("/", var.log_analytics_workspace_id)) == 9 || var.log_analytics_workspace_id == ""
+    error_message = "Please specify a valid resource ID."
+  }
+}
+
+variable "management_group_root_id" {
+  description = "Specifies the id of the root management group id."
+  type        = string
+  sensitive   = false
   validation {
     condition     = length(split("/", var.log_analytics_workspace_id)) == 9 || var.log_analytics_workspace_id == ""
     error_message = "Please specify a valid resource ID."

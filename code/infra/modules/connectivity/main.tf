@@ -9,3 +9,9 @@ resource "azurerm_resource_group" "resource_group_hub" {
   location = var.location
   tags     = var.tags
 }
+
+resource "azurerm_resource_group" "resource_group_network_manager" {
+  name     = "${local.prefix}-ntwrkmngr-rg"
+  location = var.location
+  tags     = var.tags
+}
