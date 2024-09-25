@@ -11,7 +11,7 @@ terraform {
       version = "1.15.0"
     }
   }
-  
+
   backend "azurerm" {
     environment          = "public"
     resource_group_name  = "<provided-via-config>"
