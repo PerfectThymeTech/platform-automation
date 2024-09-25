@@ -28,7 +28,7 @@ jobs:
       working_directory: "./code/infra"
       tenant_id: "37963dd4-f4e6-40f8-a7d6-24b97919e452"
       subscription_id: "e82c5267-9dc4-4f45-ac13-abdd5e130d27"
-      log_level_test: "TRACE"
+      log_level_test: "ERROR"
     secrets:
       CLIENT_ID: ${{ secrets.CLIENT_ID }}
       CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
