@@ -31,6 +31,11 @@ on:
         required: true
         type: string
         description: "Specifies the subscription id of the deployment."
+      log_level_test:
+        required: false
+        type: string
+        description: "Specifies the log level for the terraform run."
+        default: "ERROR"
     secrets:
       CLIENT_ID:
         required: true
@@ -160,6 +165,7 @@ jobs:
           terraform plan -var-file="../../config/${CONFIG}/vars.tfvars" -input=false
         env:
           CONFIG: ${{ inputs.config }}
+          TF_LOG: ${{ inputs.log_level_test }}
 
       # Add Pull Request Comment
       - name: Add Pull Request Comment
@@ -255,3 +261,4 @@ jobs:
           terraform apply -var-file="../../config/${CONFIG}/vars.tfvars" -auto-approve -input=false
         env:
           CONFIG: ${{ inputs.config }}
+          TF_LOG: ${{ inputs.log_level_test }}
