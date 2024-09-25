@@ -42,8 +42,8 @@ module "policies_landing_zones" {
   management_group_id                      = azurerm_management_group.management_group_landing_zones.id
   azure_resources_library_folder           = "landing_zones"
   custom_template_variables                = local.template_variables
-  dependency_parent                        = module.policies_root.policy_deployments_completed
-  policy_definition_roles_parent           = module.policies_root.policy_definition_roles
+  dependency_parent                        = true # module.policies_root.policy_deployments_completed
+  policy_definition_roles_parent           = {} # module.policies_root.policy_definition_roles
   policy_set_definition_references_parents = {} # module.policies_root.policy_set_definition_references
 }
 
