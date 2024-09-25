@@ -35,12 +35,16 @@ resource "azurerm_network_manager_static_member" "network_manager_static_members
 
 resource "azurerm_network_manager_deployment" "network_manager_mesh_deployment_connectivity" {
   network_manager_id = azurerm_network_manager.network_manager.id
-  location           = var.location
-  scope_access       = "Connectivity"
 
   configuration_ids = [
     azurerm_network_manager_connectivity_configuration.network_manager_connectivity_configuration_spokes.id,
   ]
+  location     = var.location
+  scope_access = "Connectivity"
+  triggers = {
+    for item in var.virtual_network_spoke_ids :
+    reverse(split("/", item))[0] => item
+  }
 
   depends_on = [
     azurerm_network_manager_static_member.network_manager_static_members
