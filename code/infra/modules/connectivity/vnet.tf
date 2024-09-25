@@ -51,11 +51,6 @@ resource "azurerm_subnet_network_security_group_association" "subnet_bastion_net
   subnet_id                 = azurerm_subnet.subnet_bastion.id
 }
 
-resource "azurerm_subnet_route_table_association" "subnet_bastion_route_table_association" {
-  route_table_id = azurerm_route_table.route_table_default.id
-  subnet_id      = azurerm_subnet.subnet_bastion.id
-}
-
 resource "azurerm_subnet" "subnet_dns_inbound" {
   name                 = "AzurePrivateDnsResolverInboundSubnet"
   resource_group_name  = azurerm_resource_group.resource_group_hub.name
