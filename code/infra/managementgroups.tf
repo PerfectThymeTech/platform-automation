@@ -54,9 +54,9 @@ resource "azurerm_management_group" "management_group_management" {
   parent_management_group_id = azurerm_management_group.management_group_platform.id
   name                       = "${local.prefix}-management"
   display_name               = "Management"
-  subscription_ids = var.management_subscription_id == "" ? null : [
-    var.management_subscription_id
-  ]
+  # subscription_ids = var.management_subscription_id == "" ? null : [
+  #   var.management_subscription_id
+  # ]
 
   depends_on = [
     time_sleep.sleep_provider_registration_mg
