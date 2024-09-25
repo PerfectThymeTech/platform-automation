@@ -7,22 +7,23 @@ resource "azurerm_network_manager_network_group" "network_manager_network_group_
 }
 
 resource "azurerm_network_manager_connectivity_configuration" "network_manager_connectivity_configuration_spokes" {
-  name                  = "${local.prefix}-avnm-connectivity-spokes"
-  network_manager_id    = azurerm_network_manager.network_manager.id
-  connectivity_topology = "HubAndSpoke"
+  name               = "${local.prefix}-avnm-connectivity-spokes"
+  network_manager_id = azurerm_network_manager.network_manager.id
 
   applies_to_group {
-    group_connectivity  = "None"
-    global_mesh_enabled = false
+    group_connectivity  = "DirectlyConnected"
+    global_mesh_enabled = true
     network_group_id    = azurerm_network_manager_network_group.network_manager_network_group_spokes.id
     use_hub_gateway     = true
   }
-
+  connectivity_topology           = "HubAndSpoke"
+  description                     = "Hub and Spoke network configuration."
+  delete_existing_peering_enabled = true
+  global_mesh_enabled             = true
   hub {
     resource_id   = azurerm_virtual_network.virtual_network_hub.id
     resource_type = "Microsoft.Network/virtualNetworks"
   }
-  delete_existing_peering_enabled = true
 }
 
 resource "azurerm_network_manager_static_member" "network_manager_static_members" {
