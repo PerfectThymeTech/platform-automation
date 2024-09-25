@@ -1,0 +1,80 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "Cmplnt-PrvtDnsZnGrps",
+  "scope": null,
+  "location": "${default_location}",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "displayName": "Compliant Private Dns Zone Groups Policy Assignment",
+    "description": "This policy assignment ensures compliant Private Dns Zone Groups.",
+    "enforcementMode": "Disabled",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Network"
+    },
+    "nonComplianceMessages": [],
+    "notScopes": [],
+    "overrides": [],
+    "resourceSelectors": [],
+    "parameters": {
+      "privateDnsZoneIdAppServiceSites": {
+        "value": "${private_dns_zone_id_privatelink_azurewebsites_net}"
+      },
+      "privateDnsZoneIdCognitiveServicesAccount": {
+        "value": "${private_dns_zone_id_privatelink_cognitiveservices_azure_com}"
+      },
+      "privateDnsZoneIdOpenAiAccount": {
+        "value": "${private_dns_zone_id_privatelink_openai_azure_com}"
+      },
+      "privateDnsZoneIdContainerRegistryRegistry": {
+        "value": "${private_dns_zone_id_privatelink_azurecr_io}"
+      },
+      "privateDnsZoneIdKeyVaultVault": {
+        "value": "${private_dns_zone_id_privatelink_vaultcore_azure_net}"
+      },
+      "privateDnsZoneIdKustoClusterNorthEurope": {
+        "value": "${private_dns_zone_id_privatelink_northeurope_kusto_windows_net}"
+      },
+      "privateDnsZoneIdKustoClusterWestEurope": {
+        "value": ""
+      },
+      "privateDnsZoneIdMachineLearningAzureMl": {
+        "value": "${private_dns_zone_id_privatelink_api_azureml_ms}"
+      },
+      "privateDnsZoneIdMachineLearningNotebooks": {
+        "value": "${private_dns_zone_id_privatelink_notebooks_azure_net}"
+      },
+      "privateDnsZoneIdSearchSearchService": {
+        "value": "${private_dns_zone_id_privatelink_search_windows_net}"
+      },
+      "privateDnsZoneIdStorageBlob": {
+        "value": "${private_dns_zone_id_privatelink_blob_core_windows_net}"
+      },
+      "privateDnsZoneIdStorageDfs": {
+        "value": "${private_dns_zone_id_privatelink_dfs_core_windows_net}"
+      },
+      "privateDnsZoneIdStorageFile": {
+        "value": "${private_dns_zone_id_privatelink_file_core_windows_net}"
+      },
+      "privateDnsZoneIdStorageQueue": {
+        "value": "${private_dns_zone_id_privatelink_queue_core_windows_net}"
+      },
+      "privateDnsZoneIdStorageTable": {
+        "value": "${private_dns_zone_id_privatelink_table_core_windows_net}"
+      },
+      "privateDnsZoneIdStorageWeb": {
+        "value": "${private_dns_zone_id_privatelink_web_core_windows_net}"
+      },
+      "privateDnsZoneIdSynapseDev": {
+        "value": "${private_dns_zone_id_privatelink_dev_azuresynapse_net}"
+      },
+      "privateDnsZoneIdSynapseSql": {
+        "value": "${private_dns_zone_id_privatelink_sql_azuresynapse_net}"
+      }
+    },
+    "policyDefinitionId": "${scope_id_root}/providers/Microsoft.Authorization/policySetDefinitions/Cmplnt-PrvtDnsZnGrps"
+  }
+}
