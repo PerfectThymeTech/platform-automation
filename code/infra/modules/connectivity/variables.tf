@@ -58,6 +58,13 @@ variable "log_analytics_workspace_id" {
   }
 }
 
+variable "virtual_network_spoke_ids" {
+  description = "Specifies the ids of the spoke vnets."
+  type        = list(string)
+  sensitive   = false
+  default     = []
+}
+
 variable "management_group_root_id" {
   description = "Specifies the id of the root management group id."
   type        = string

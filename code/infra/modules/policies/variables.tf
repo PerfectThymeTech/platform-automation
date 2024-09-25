@@ -33,7 +33,7 @@ variable "user_assigned_identity_id" {
   sensitive   = false
   nullable    = false
   validation {
-    condition     = length(split(var.user_assigned_identity_id, "/")) == 9
+    condition     = length(split("/", var.user_assigned_identity_id)) == 9
     error_message = "Please provide a valid id."
   }
 }

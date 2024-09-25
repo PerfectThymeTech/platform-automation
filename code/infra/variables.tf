@@ -65,6 +65,7 @@ variable "connectivity_hub" {
   description = "Specifies the connectiviyt hub configuration."
   type = object({
     vnet_address_range = optional(string, "10.0.0.0/16")
+    virtual_network_spoke_ids = optional(list(string), [])
   })
   sensitive = false
   default   = {}
