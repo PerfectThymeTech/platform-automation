@@ -38,3 +38,12 @@ variable "tags" {
 }
 
 # Management variables
+variable "management_group_root_id" {
+  description = "Specifies the id of the root management group id."
+  type        = string
+  sensitive   = false
+  validation {
+    condition     = length(split("/", var.management_group_root_id)) == 5
+    error_message = "Please specify a valid resource ID."
+  }
+}

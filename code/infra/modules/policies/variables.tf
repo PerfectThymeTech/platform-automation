@@ -27,6 +27,17 @@ variable "management_group_id" {
   }
 }
 
+variable "user_assigned_identity_id" {
+  description = "Specifies the id of the user assigned identity."
+  type        = string
+  sensitive   = false
+  nullable    = false
+  validation {
+    condition     = length(split(var.user_assigned_identity_id, "/")) == 9
+    error_message = "Please provide a valid id."
+  }
+}
+
 variable "azure_resources_library_folder" {
   description = "Specifies the base folder to the Azure resources library."
   type        = string
@@ -46,25 +57,4 @@ variable "dependency_parent" {
   description = "Specifies a dependency for deployments."
   type        = bool
   sensitive   = false
-}
-
-variable "policy_definition_roles_parent" {
-  description = "Specifies the roles per policy definition defined in parent scopes."
-  type        = map(list(string))
-  sensitive   = false
-  nullable    = false
-  default     = {}
-}
-
-variable "policy_set_definition_references_parents" {
-  description = "Specifies existing policy set definitions in parent scopes."
-  type = map(list(object({
-    policy_definition_id           = string
-    policy_definition_reference_id = string
-    parameters                     = map(any)
-    group_names                    = list(string)
-  })))
-  sensitive = false
-  nullable  = false
-  default   = {}
 }
