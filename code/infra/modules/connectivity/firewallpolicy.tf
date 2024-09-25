@@ -16,10 +16,10 @@ resource "azurerm_firewall_policy" "firewall_policy" {
     default_log_analytics_workspace_id = var.log_analytics_workspace_id
     retention_in_days                  = 30
   }
-  intrusion_detection {
-    mode           = "Alert"
-    private_ranges = []
-  }
+  # intrusion_detection {
+  #   mode           = "Alert"
+  #   private_ranges = []
+  # }
   sku                  = "Standard"
   private_ip_ranges    = null
   sql_redirect_allowed = false
