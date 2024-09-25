@@ -44,7 +44,7 @@ module "policies_landing_zones" {
   custom_template_variables                = local.template_variables
   dependency_parent                        = module.policies_root.policy_deployments_completed
   policy_definition_roles_parent           = module.policies_root.policy_definition_roles
-  policy_set_definition_references_parents = module.policies_root.policy_set_definition_references
+  policy_set_definition_references_parents = {} # module.policies_root.policy_set_definition_references
 }
 
 module "policy_role_assignments_landing_zones" {
