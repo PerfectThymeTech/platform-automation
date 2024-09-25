@@ -36,3 +36,8 @@ connectivity_hub = {
   virtual_network_spoke_ids = []
 }
 management_subscription_id = "e82c5267-9dc4-4f45-ac13-abdd5e130d27"
+landing_zone_corp_subscription_ids = [
+  "660ed196-9d05-44fc-b902-0c11ca014bd6",
+  "9842be63-c8c0-4647-a5d1-0c5e7f8bbb25",
+  "1fdab118-1638-419a-8b12-06c9543714a0",
+]

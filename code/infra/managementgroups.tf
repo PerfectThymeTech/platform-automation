@@ -92,6 +92,7 @@ resource "azurerm_management_group" "management_group_corp" {
   parent_management_group_id = azurerm_management_group.management_group_landing_zones.id
   name                       = "${local.prefix}-corp"
   display_name               = "Corp"
+  subscription_ids           = var.landing_zone_corp_subscription_ids
 
   depends_on = [
     time_sleep.sleep_provider_registration_mg

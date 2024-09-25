@@ -84,3 +84,13 @@ variable "management_subscription_id" {
     error_message = "Please specify a valid subscription id."
   }
 }
+
+variable "landing_zone_corp_subscription_ids" {
+  description = "Specifies the id of the Azure subscription used for network platform resources."
+  type        = list(string)
+  sensitive   = false
+  # validation {
+  #   condition     = var.management_subscription_id == "" || length(regexall("^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$", var.management_subscription_id)) > 0
+  #   error_message = "Please specify a valid subscription id."
+  # }
+}
