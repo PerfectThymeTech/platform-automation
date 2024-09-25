@@ -17,18 +17,32 @@ locals {
     "Microsoft.SecurityInsights",
   ]
 
+  # Management Group names
+  management_group_names = {
+    root          = "${local.prefix}-${lower(var.organization_name)}"
+    platform      = "${local.prefix}-platform"
+    identity      = "${local.prefix}-identity"
+    management    = "${local.prefix}-management"
+    connectivity  = "${local.prefix}-connectivity"
+    landing_zones = "${local.prefix}-landing-zones"
+    corp          = "${local.prefix}-corp"
+    cloud_native  = "${local.prefix}-cloud-native"
+    playground    = "${local.prefix}-playground"
+    decomissioned = "${local.prefix}-decomissioned"
+  }
+
   # Scope template variables
   scope_template_variables = {
-    scope_id_root          = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_root.name}"
-    scope_id_platform      = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_platform.name}"
-    scope_id_identity      = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_identity.name}"
-    scope_id_management    = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_management.name}"
-    scope_id_connectivity  = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_connectivity.name}"
-    scope_id_landing_zones = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_landing_zones.name}"
-    scope_id_corp          = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_corp.name}"
-    scope_id_cloud_native  = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_cloud_native.name}"
-    scope_id_playground    = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_playground.name}"
-    scope_id_decomissioned = "/providers/Microsoft.Management/managementGroups/${azurerm_management_group.management_group_decomissioned.name}"
+    scope_id_root          = "/providers/Microsoft.Management/managementGroups/${local.management_group_names.root}"
+    scope_id_platform      = "/providers/Microsoft.Management/managementGroups/${local.management_group_names.platform}"
+    scope_id_identity      = "/providers/Microsoft.Management/managementGroups/${local.management_group_names.identity}"
+    scope_id_management    = "/providers/Microsoft.Management/managementGroups/${local.management_group_names.management}"
+    scope_id_connectivity  = "/providers/Microsoft.Management/managementGroups/${local.management_group_names.connectivity}"
+    scope_id_landing_zones = "/providers/Microsoft.Management/managementGroups/${local.management_group_names.landing_zones}"
+    scope_id_corp          = "/providers/Microsoft.Management/managementGroups/${local.management_group_names.corp}"
+    scope_id_cloud_native  = "/providers/Microsoft.Management/managementGroups/${local.management_group_names.cloud_native}"
+    scope_id_playground    = "/providers/Microsoft.Management/managementGroups/${local.management_group_names.playground}"
+    scope_id_decomissioned = "/providers/Microsoft.Management/managementGroups/${local.management_group_names.decomissioned}"
   }
   # DNS template variables
   dns_template_variables = {

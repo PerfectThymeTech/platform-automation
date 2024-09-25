@@ -6,7 +6,7 @@ module "policies_root" {
   }
 
   location                                 = var.location
-  management_group_name                    = azurerm_management_group.management_group_root.name
+  management_group_name                    = local.management_group_names.root
   management_group_id                      = azurerm_management_group.management_group_root.id
   azure_resources_library_folder           = "root"
   custom_template_variables                = local.template_variables
@@ -38,7 +38,7 @@ module "policies_landing_zones" {
   }
 
   location                                 = var.location
-  management_group_name                    = azurerm_management_group.management_group_landing_zones.name
+  management_group_name                    = local.management_group_names.landing_zones
   management_group_id                      = azurerm_management_group.management_group_landing_zones.id
   azure_resources_library_folder           = "landing_zones"
   custom_template_variables                = local.template_variables
