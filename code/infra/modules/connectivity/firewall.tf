@@ -20,7 +20,7 @@ resource "azurerm_firewall_policy" "firewall_policy" {
     mode           = "Alert"
     private_ranges = []
   }
-  sku                  = "Basic"
+  sku                  = "Standard"
   private_ip_ranges    = null
   sql_redirect_allowed = false
   threat_intelligence_allowlist {
@@ -37,7 +37,7 @@ resource "azurerm_firewall" "firewall" {
   tags                = var.tags
 
   sku_name           = "AZFW_VNet"
-  sku_tier           = "Basic"
+  sku_tier           = "Standard"
   firewall_policy_id = azurerm_firewall_policy.firewall_policy.id
   ip_configuration {
     name                 = "public-ip"

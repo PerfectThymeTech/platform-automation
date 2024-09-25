@@ -8,7 +8,7 @@ resource "azurerm_network_security_group" "network_security_group_default" {
 }
 
 resource "azurerm_network_security_group" "network_security_group_bastion" {
-  name                = "${local.prefix}-default-nsg001"
+  name                = "${local.prefix}-bastion-nsg001"
   location            = var.location
   resource_group_name = azurerm_resource_group.resource_group_hub.name
   tags                = var.tags
