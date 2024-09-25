@@ -14,7 +14,7 @@ resource "azurerm_network_manager_connectivity_configuration" "network_manager_c
     group_connectivity  = "DirectlyConnected"
     global_mesh_enabled = true
     network_group_id    = azurerm_network_manager_network_group.network_manager_network_group_spokes.id
-    use_hub_gateway     = true
+    use_hub_gateway     = false
   }
   connectivity_topology           = "HubAndSpoke"
   description                     = "Hub and Spoke network configuration."
