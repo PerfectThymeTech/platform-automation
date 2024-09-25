@@ -32,6 +32,7 @@ custom_template_variables = {
 }
 connectivity_subscription_id = "e82c5267-9dc4-4f45-ac13-abdd5e130d27"
 connectivity_hub = {
-  vnet_address_range = "10.0.0.0/16"
+  vnet_address_range        = "10.0.0.0/16"
+  virtual_network_spoke_ids = []
 }
 management_subscription_id = "e82c5267-9dc4-4f45-ac13-abdd5e130d27"
