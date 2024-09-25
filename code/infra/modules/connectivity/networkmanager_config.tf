@@ -43,7 +43,7 @@ resource "azurerm_network_manager_deployment" "network_manager_mesh_deployment_c
   scope_access = "Connectivity"
   triggers = {
     for item in var.virtual_network_spoke_ids :
-    reverse(split("/", item))[0] => item
+    replace(item, "/", "-") => item
   }
 
   depends_on = [
