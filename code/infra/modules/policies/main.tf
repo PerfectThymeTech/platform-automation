@@ -59,7 +59,10 @@ resource "azurerm_management_group_policy_assignment" "policy_assignments" {
   management_group_id = var.management_group_id
   location            = var.location
   identity {
-    type = "SystemAssigned"
+    type = "UserAssigned"
+    identity_ids = [
+      var.user_assigned_identity_id
+    ]
   }
 
   display_name         = try(each.value.properties.displayName, "")

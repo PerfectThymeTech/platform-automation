@@ -21,7 +21,7 @@
     "resourceSelectors": [],
     "parameters": {
       "logAnalytics": {
-        "value": "${log_analytics_id}"
+        "value": "${log_analytics_workspace_id}"
       }
     },
     "policyDefinitionId": "${scope_id_root}/providers/Microsoft.Authorization/policySetDefinitions/Cmplnt-Diagnostics"

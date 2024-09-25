@@ -5,29 +5,13 @@ module "policies_root" {
     azurerm = azurerm
   }
 
-  location                                 = var.location
-  management_group_name                    = azurerm_management_group.management_group_root.name
-  management_group_id                      = azurerm_management_group.management_group_root.id
-  azure_resources_library_folder           = "root"
-  custom_template_variables                = local.template_variables
-  dependency_parent                        = true
-  policy_definition_roles_parent           = {}
-  policy_set_definition_references_parents = {}
-}
-
-module "policy_role_assignments_root" {
-  source = "./modules/policy_role_assignments"
-  providers = {
-    azurerm = azurerm
-  }
-
-  for_each = module.policies_root.policy_assignment_references
-
+  location                       = var.location
+  management_group_name          = local.management_group_names.root
   management_group_id            = azurerm_management_group.management_group_root.id
-  policy_assignment_principal_id = each.value.principal_id
-  policy_definition_id           = each.value.policy_definition_id
-  policy_definition_references   = lookup(module.policies_root.policy_set_definition_references, each.value.policy_definition_id, [])
-  policy_definition_roles        = module.policies_root.policy_definition_roles
+  user_assigned_identity_id      = module.management.user_assigned_identity_id
+  azure_resources_library_folder = "root"
+  custom_template_variables      = local.template_variables
+  dependency_parent              = true
 }
 
 # Landing Zone Management Groups Policies
@@ -37,27 +21,11 @@ module "policies_landing_zones" {
     azurerm = azurerm
   }
 
-  location                                 = var.location
-  management_group_name                    = azurerm_management_group.management_group_landing_zones.name
-  management_group_id                      = azurerm_management_group.management_group_landing_zones.id
-  azure_resources_library_folder           = "landing_zones"
-  custom_template_variables                = local.template_variables
-  dependency_parent                        = module.policies_root.policy_deployments_completed
-  policy_definition_roles_parent           = module.policies_root.policy_definition_roles
-  policy_set_definition_references_parents = module.policies_root.policy_set_definition_references
-}
-
-module "policy_role_assignments_landing_zones" {
-  source = "./modules/policy_role_assignments"
-  providers = {
-    azurerm = azurerm
-  }
-
-  for_each = module.policies_landing_zones.policy_assignment_references
-
+  location                       = var.location
+  management_group_name          = local.management_group_names.landing_zones
   management_group_id            = azurerm_management_group.management_group_landing_zones.id
-  policy_assignment_principal_id = each.value.principal_id
-  policy_definition_id           = each.value.policy_definition_id
-  policy_definition_references   = lookup(module.policies_landing_zones.policy_set_definition_references, each.value.policy_definition_id, [])
-  policy_definition_roles        = module.policies_landing_zones.policy_definition_roles
+  user_assigned_identity_id      = module.management.user_assigned_identity_id
+  azure_resources_library_folder = "landing_zones"
+  custom_template_variables      = local.template_variables
+  dependency_parent              = module.policies_root.policy_deployments_completed
 }
