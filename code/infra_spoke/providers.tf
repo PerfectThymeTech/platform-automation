@@ -4,7 +4,6 @@ provider "azurerm" {
   resource_provider_registrations = "none"
   resource_providers_to_register  = local.resource_providers_to_register
   storage_use_azuread             = true
-  subscription_id                 = "1fdab118-1638-419a-8b12-06c9543714a0"
   # use_oidc                       = true
 
   features {
