@@ -33,7 +33,7 @@ locals {
   # Get list of policy sets NOT managed by this module to load details via data resource
   external_policy_set_definitions_list = distinct(compact([
     for policy_set_id in local.azure_policy_assignments_policy_set_id_list :
-    contains(keys(local.internal_policy_set_definition_references_merged), policy_set_id) ? null : policy_set_id
+    policy_set_id if !contains(keys(local.internal_policy_set_definition_references_merged), policy_set_id)
   ]))
   external_policy_set_definitions_map = {
     for external_policy_set_definition in local.external_policy_set_definitions_list :
