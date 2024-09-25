@@ -16,7 +16,7 @@ locals {
     "Microsoft.Security",
     "Microsoft.SecurityInsights",
   ]
-  
+
   # Resource providers to register at management group scope
   resource_providers_to_register_at_mg = [
     "Microsoft.PolicyInsights",
