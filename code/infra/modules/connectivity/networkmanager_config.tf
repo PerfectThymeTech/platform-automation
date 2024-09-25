@@ -28,7 +28,7 @@ resource "azurerm_network_manager_connectivity_configuration" "network_manager_c
 resource "azurerm_network_manager_static_member" "network_manager_static_members" {
   for_each = toset(var.virtual_network_spoke_ids)
 
-  name                      = "${local.prefix}-avnm-connectivity-spokes-${reverse(split("/", each.key))[0]}-${split("/", each.key)[2]}"
+  name                      = "static-${reverse(split("/", each.key))[0]}-${split("/", each.key)[2]}"
   network_group_id          = azurerm_network_manager_network_group.network_manager_network_group_spokes.id
   target_virtual_network_id = each.key
 }
