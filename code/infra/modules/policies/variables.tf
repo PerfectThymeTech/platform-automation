@@ -43,7 +43,7 @@ variable "custom_template_variables" {
 }
 
 variable "dependency_parent" {
-  description = "Specifies a list of dependencies for deployments."
+  description = "Specifies a dependency for deployments."
   type        = bool
   sensitive   = false
 }
