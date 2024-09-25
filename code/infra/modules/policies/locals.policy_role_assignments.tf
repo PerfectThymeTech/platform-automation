@@ -41,10 +41,21 @@ locals {
   }
 
   # Get details of policy sets NOT managed by this module
+  # external_policy_set_definition_references = {
+  #   for key, value in data.azurerm_policy_set_definition.policy_set_definition :
+  #   key => [
+  #     for policy_definition_reference in value.policy_definition_reference : {
+  #       policy_definition_id           = policy_definition_reference.policy_definition_id,
+  #       policy_definition_reference_id = policy_definition_reference.reference_id,
+  #       parameters                     = policy_definition_reference.parameter_values,
+  #       group_names                    = policy_definition_reference.policy_group_names,
+  #     }
+  #   ]
+  # }
   external_policy_set_definition_references = {
-    for key, value in data.azurerm_policy_set_definition.policy_set_definition :
+    for key, value in local.external_policy_set_definitions_map :
     key => [
-      for policy_definition_reference in value.policy_definition_reference : {
+      for policy_definition_reference in data.azurerm_policy_set_definition.policy_set_definition[key].policy_definition_reference : {
         policy_definition_id           = policy_definition_reference.policy_definition_id,
         policy_definition_reference_id = policy_definition_reference.reference_id,
         parameters                     = policy_definition_reference.parameter_values,
