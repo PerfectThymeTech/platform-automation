@@ -16,6 +16,16 @@ locals {
     "Microsoft.Security",
     "Microsoft.SecurityInsights",
   ]
+  
+  # Resource providers to register at management group scope
+  resource_providers_to_register_at_mg = [
+    "Microsoft.PolicyInsights",
+    "Microsoft.Security",
+    "Microsoft.SecurityInsights",
+    "Microsoft.Insights",
+    "Microsoft.Network",
+    "Microsoft.Consumption",
+  ]
 
   # Management Group names
   management_group_names = {

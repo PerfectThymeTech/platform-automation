@@ -10,6 +10,14 @@ terraform {
       source  = "azure/azapi"
       version = "1.15.0"
     }
+    null = {
+      source = "hashicorp/null"
+      version = "3.2.3"
+    }
+    time = {
+      source = "hashicorp/time"
+      version = "0.12.1"
+    }
   }
 
   backend "azurerm" {
