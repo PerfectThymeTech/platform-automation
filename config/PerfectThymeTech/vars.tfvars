@@ -32,8 +32,12 @@ custom_template_variables = {
 }
 connectivity_subscription_id = "e82c5267-9dc4-4f45-ac13-abdd5e130d27"
 connectivity_hub = {
-  vnet_address_range        = "10.0.0.0/16"
-  virtual_network_spoke_ids = []
+  vnet_address_range = "10.0.0.0/16"
+  virtual_network_spoke_ids = [
+    "/subscriptions/660ed196-9d05-44fc-b902-0c11ca014bd6/resourceGroups/ptt-dev-networking-rg/providers/Microsoft.Network/virtualNetworks/spoke-ptt-dev-vnet001",
+    "/subscriptions/9842be63-c8c0-4647-a5d1-0c5e7f8bbb25/resourceGroups/ptt-dev-networking-rg/providers/Microsoft.Network/virtualNetworks/spoke-ptt-dev-vnet001",
+    "/subscriptions/1fdab118-1638-419a-8b12-06c9543714a0/resourceGroups/ptt-dev-networking-rg/providers/Microsoft.Network/virtualNetworks/spoke-ptt-dev-vnet001",
+  ]
 }
 management_subscription_id = "e82c5267-9dc4-4f45-ac13-abdd5e130d27"
 landing_zone_corp_subscription_ids = [
