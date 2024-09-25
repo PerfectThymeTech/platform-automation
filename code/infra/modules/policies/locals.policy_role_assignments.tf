@@ -65,7 +65,7 @@ locals {
   }
 
   # Get combined details of policy sets
-  policy_set_definition_references = merge(local.internal_policy_set_definition_references_merged) #, local.external_policy_set_definition_references)
+  policy_set_definition_references = merge(local.internal_policy_set_definition_references_merged, local.external_policy_set_definition_references)
 }
 
 locals {

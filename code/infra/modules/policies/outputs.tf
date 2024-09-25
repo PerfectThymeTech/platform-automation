@@ -13,7 +13,7 @@ output "policy_assignment_references" {
 output "policy_set_definition_references" {
   description = "Specifies the details of policy sets managed at this scope and at parent scopes."
   sensitive   = false
-  value       = local.policy_set_definition_references
+  value       = local.internal_policy_set_definition_references_merged # local.policy_set_definition_references
 }
 
 output "policy_definition_roles" {
