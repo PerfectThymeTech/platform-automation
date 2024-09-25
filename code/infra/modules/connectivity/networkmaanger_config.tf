@@ -34,7 +34,7 @@ resource "azurerm_network_manager_static_member" "network_manager_static_members
 }
 
 resource "azurerm_network_manager_deployment" "network_manager_mesh_deployment_connectivity" {
-  network_manager_id = module.file_new_tenant.network_manager_resource_id
+  network_manager_id = azurerm_network_manager.network_manager.id
   location           = var.location
   scope_access       = "Connectivity"
 
