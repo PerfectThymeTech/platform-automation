@@ -1,6 +1,6 @@
 {
   "type": "Microsoft.Authorization/policyDefinitions",
-  "name": "Deny-Storage-ContainerDeleteRetentionPolicy",
+  "name": "Modify-Storage-ContainerDeleteRetentionPolicy",
   "properties": {
     "displayName": "Configure storage accounts container delete retention policy",
     "mode": "All",
