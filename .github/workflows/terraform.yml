@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - "**.tf"
+      - "code/definitions/**"
       - "code/infra/**"
       - ".github/workflows/terraform.yml"
 
@@ -13,6 +14,7 @@ on:
       - main
     paths:
       - "**.tf"
+      - "code/definitions/**"
       - "code/infra/**"
       - ".github/workflows/terraform.yml"
 
