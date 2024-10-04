@@ -1,0 +1,461 @@
+{
+  "type": "Microsoft.Authorization/policySetDefinitions",
+  "apiVersion": "2021-06-01",
+  "name": "Cmplnt-Security",
+  "properties": {
+    "description": "Deploy Microsoft Defender for Cloud configuration",
+    "displayName": "Deploy Microsoft Defender for Cloud configuration",
+    "policyType": "Custom",
+    "metadata": {
+      "version": "3.0.0",
+      "category": "Security Center"
+    },
+    "policyDefinitionGroups": [
+      {
+        "name": "Security",
+        "category": "Security",
+        "displayName": "Ensure Defender for Cloud is enabled with required settings on the subscription",
+        "description": "Policy to ensure Defender for Cloud is enabled with required settings on the subscription"
+      }
+    ],
+    "parameters": {
+      "emailSecurityContact": {
+        "type": "string",
+        "metadata": {
+          "displayName": "Security contacts email address",
+          "description": "Provide email address for Microsoft Defender for Cloud contact details"
+        }
+      },
+      "logAnalytics": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Primary Log Analytics workspace",
+          "description": "Select Log Analytics workspace from dropdown list. If this workspace is outside of the scope of the assignment you must manually grant 'Log Analytics Contributor' permissions (or similar) to the policy assignment's principal ID.",
+          "strongType": "omsWorkspace"
+        }
+      },
+      "ascExportResourceGroupName": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Resource Group name for the export to Log Analytics workspace configuration",
+          "description": "The resource group name where the export to Log Analytics workspace configuration is created. If you enter a name for a resource group that doesn't exist, it'll be created in the subscription. Note that each resource group can only have one export to Log Analytics workspace configured."
+        }
+      },
+      "ascExportResourceGroupLocation": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Resource Group location for the export to Log Analytics workspace configuration",
+          "description": "The location where the resource group and the export to Log Analytics workspace configuration are created."
+        }
+      },
+      "enableAscForSql": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        }
+      },
+      "enableAscForSqlOnVm": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        }
+      },
+      "enableAscForDns": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        }
+      },
+      "enableAscForArm": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        }
+      },
+      "enableAscForOssDb": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        }
+      },
+      "enableAscForAppServices": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        }
+      },
+      "enableAscForKeyVault": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        }
+      },
+      "enableAscForStorage": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        }
+      },
+      "enableAscForContainers": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        }
+      },
+      "enableAscForServers": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        }
+      },
+      "enableAscForCSPM": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enablle or disable the execution of the policy"
+        },
+        "defaultValue": "DeployIfNotExists"
+      },
+      "enableAscForCosmosDb": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enablle or disable the execution of the policy"
+        },
+        "defaultValue": "DeployIfNotExists"
+      },
+      "enableAscForSynapse": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enablle or disable the execution of the policy"
+        },
+        "defaultValue": "DeployIfNotExists"
+      },
+      "enableAscForApim": {
+        "type": "string",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "defaultValue": "DeployIfNotExists"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/951c1558-50a5-4ca3-abb6-a93e3e2367a6",
+        "policyDefinitionReferenceId": "defenderForSynapse",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForSynapse')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e54d2be9-5f2e-4d65-98e4-4f0e670b23d6",
+        "policyDefinitionReferenceId": "defenderForApim",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForApim')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/82bf5b87-728b-4a74-ba4d-6123845cf542",
+        "policyDefinitionReferenceId": "defenderForCosmosDb",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForCosmosDb')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/689f7782-ef2c-4270-a6d0-7664869076bd",
+        "policyDefinitionReferenceId": "defenderForCSPM",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForCSPM')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/44433aa3-7ec2-4002-93ea-65c65ff0310a",
+        "policyDefinitionReferenceId": "defenderForOssDb",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForOssDb')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/db048e65-913c-49f9-bb5f-1084184671d3",
+        "policyDefinitionReferenceId": "defenderForOssDbAdvancedThreatProtectionPostgres",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForOssDb')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/80ed5239-4122-41ed-b54a-6f1fa7552816",
+        "policyDefinitionReferenceId": "defenderForOssDbAdvancedThreatProtectionMySql",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForOssDb')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a6cf7411-da9e-49e2-aec0-cba0250eaf8c",
+        "policyDefinitionReferenceId": "defenderForOssDbAdvancedThreatProtectionMariaDb",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForOssDb')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a6ae02f-7590-40d7-88ba-b18e205a32fd",
+        "policyDefinitionReferenceId": "defenderForOssDbAdvancedThreatProtectionPostgresFlexible",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForOssDb')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/3d5ed4c2-5e50-4c76-932b-8982691b68ae",
+        "policyDefinitionReferenceId": "defenderForOssDbAdvancedThreatProtectionMySqlFlexible",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForOssDb')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8e86a5b6-b9bd-49d1-8e21-4bb8a0862222",
+        "policyDefinitionReferenceId": "defenderForVM",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForServers')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/50ea7265-7d8c-429e-9a7d-ca1f410191c3",
+        "policyDefinitionReferenceId": "defenderForSqlServerVirtualMachines",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForSqlOnVm')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b40e7bcd-a1e5-47fe-b9cf-2f534d0bfb7d",
+        "policyDefinitionReferenceId": "defenderForAppServices",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForAppServices')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/74c30959-af11-47b3-9ed2-a26e03f427a3",
+        "policyDefinitionReferenceId": "defenderForStorageAccounts",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForStorage')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c9ddb292-b203-4738-aead-18e2716e858f",
+        "policyDefinitionReferenceId": "defenderforContainers",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForContainers')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionReferenceId": "defenderforKubernetes",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/64def556-fbad-4622-930e-72d1d5589bf5",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForContainers')]"
+          },
+          "logAnalyticsWorkspaceResourceId": {
+            "value": "[parameters('logAnalytics')]"
+          }
+        },
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "defenderforKubernetesArc",
+        "policyDefinitionId": "/providers/microsoft.authorization/policydefinitions/708b60a6-d253-4fe0-9114-4be4c00f012c",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForContainers')]"
+          },
+          "logAnalyticsWorkspaceResourceId": {
+            "value": "[parameters('logAnalytics')]"
+          }
+        },
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "azurePolicyForKubernetes",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a8eff44f-8c92-45c3-a3fb-9880802d67a7",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForContainers')]"
+          }
+        },
+        "groupNames": []
+      },
+      {
+        "policyDefinitionReferenceId": "azurePolicyForKubernetesArc",
+        "policyDefinitionId": "/providers/microsoft.authorization/policydefinitions/0adc5395-9169-4b9b-8687-af838d69410a",
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForContainers')]"
+          }
+        },
+        "groupNames": []
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1f725891-01c0-420a-9059-4fa46cb770b7",
+        "policyDefinitionReferenceId": "defenderForKeyVaults",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "Effect": {
+            "value": "[parameters('enableAscForKeyVault')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2370a3c1-4a25-4283-a91a-c9c1a145fb2f",
+        "policyDefinitionReferenceId": "defenderForDns",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForDns')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b7021b2b-08fd-4dc0-9de7-3c6ece09faf9",
+        "policyDefinitionReferenceId": "defenderForArm",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForArm')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b99b73e7-074b-4089-9395-b7236f094491",
+        "policyDefinitionReferenceId": "defenderForSqlPaas",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableAscForSql')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "${scope_id_root}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Defender-SecurityContacts",
+        "policyDefinitionReferenceId": "securityEmailContact",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "emailSecurityContact": {
+            "value": "[parameters('emailSecurityContact')]"
+          }
+        }
+      },
+      {
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ffb6f416-7bd2-4488-8828-56585fef2be9",
+        "policyDefinitionReferenceId": "ascExport",
+        "groupNames": [
+          "Security"
+        ],
+        "parameters": {
+          "resourceGroupName": {
+            "value": "[parameters('ascExportResourceGroupName')]"
+          },
+          "resourceGroupLocation": {
+            "value": "[parameters('ascExportResourceGroupLocation')]"
+          },
+          "workspaceResourceId": {
+            "value": "[parameters('logAnalytics')]"
+          }
+        }
+      }
+    ]
+  }
+}
