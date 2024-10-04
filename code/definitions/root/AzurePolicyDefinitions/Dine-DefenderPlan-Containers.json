@@ -47,6 +47,18 @@
           "false"
         ],
         "defaultValue": "true"
+      },
+      "isContainerSensorEnabled": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Container Sensor Enabled",
+          "description": "Deployed to each worker node, collects security-related data and sends it to Defender for analysis. Required for runtime protections and security capabilities provided by Defender for Containers. On Azure Kubernetes Service (AKS), will be deployed as a Security Profile. On Arc clusters, will be deployed as an Arc extension."
+        },
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true"
       }
     },
     "policyRule": {
@@ -87,6 +99,42 @@
                   }
                 },
                 "equals": 1
+              },
+              {
+                "count": {
+                  "field": "Microsoft.Security/pricings/extensions[*]",
+                  "where": {
+                    "allOf": [
+                      {
+                        "field": "Microsoft.Security/pricings/extensions[*].name",
+                        "equals": "AgentlessDiscoveryForKubernetes"
+                      },
+                      {
+                        "field": "Microsoft.Security/pricings/extensions[*].isEnabled",
+                        "equals": "[parameters('isAgentlessDiscoveryForKubernetesEnabled')]"
+                      }
+                    ]
+                  }
+                },
+                "equals": 1
+              },
+              {
+                "count": {
+                  "field": "Microsoft.Security/pricings/extensions[*]",
+                  "where": {
+                    "allOf": [
+                      {
+                        "field": "Microsoft.Security/pricings/extensions[*].name",
+                        "equals": "ContainerSensor"
+                      },
+                      {
+                        "field": "Microsoft.Security/pricings/extensions[*].isEnabled",
+                        "equals": "[parameters('isContainerSensorEnabled')]"
+                      }
+                    ]
+                  }
+                },
+                "equals": 1
               }
             ]
           },
@@ -100,6 +148,9 @@
                 },
                 "isAgentlessDiscoveryForKubernetesEnabled": {
                   "value": "[parameters('isAgentlessDiscoveryForKubernetesEnabled')]"
+                },
+                "isContainerSensorEnabled": {
+                  "value": "[parameters('isContainerSensorEnabled')]"
                 }
               },
               "template": {
@@ -110,6 +161,9 @@
                     "type": "String"
                   },
                   "isAgentlessDiscoveryForKubernetesEnabled": {
+                    "type": "String"
+                  },
+                  "isContainerSensorEnabled": {
                     "type": "String"
                   }
                 },
@@ -128,6 +182,10 @@
                         {
                           "name": "AgentlessDiscoveryForKubernetes",
                           "isEnabled": "[parameters('isAgentlessDiscoveryForKubernetesEnabled')]"
+                        },
+                        {
+                          "name": "ContainerSensor",
+                          "isEnabled": "[parameters('isContainerSensorEnabled')]"
                         }
                       ]
                     }
