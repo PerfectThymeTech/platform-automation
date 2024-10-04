@@ -427,7 +427,7 @@
         }
       },
       {
-        "policyDefinitionId": "${scope_id_root}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Defender-SecurityContacts",
+        "policyDefinitionId": "${scope_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Defender-SecurityContacts",
         "policyDefinitionReferenceId": "securityEmailContact",
         "groupNames": [
           "Security"
