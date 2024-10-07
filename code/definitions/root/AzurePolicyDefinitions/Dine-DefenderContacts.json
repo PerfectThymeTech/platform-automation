@@ -29,6 +29,19 @@
           "displayName": "Effect",
           "description": "Enable or disable the execution of the policy"
         }
+      },
+      "minimalSeverity": {
+        "type": "String",
+        "defaultValue": "High",
+        "allowedValues": [
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "metadata": {
+          "displayName": "Minimal severity",
+          "description": "Defines the minimal alert severity which will be sent as email notifications"
+        }
       }
     },
     "policyRule": {
@@ -56,16 +69,12 @@
                 "contains": "[parameters('emailSecurityContact')]"
               },
               {
-                "field": "type",
-                "equals": "Microsoft.Security/securityContacts"
+                "field": "Microsoft.Security/securityContacts/isEnabled",
+                "equals": true
               },
               {
-                "field": "Microsoft.Security/securityContacts/alertNotifications",
-                "equals": "On"
-              },
-              {
-                "field": "Microsoft.Security/securityContacts/alertsToAdmins",
-                "equals": "On"
+                "field": "Microsoft.Security/securityContacts/notificationsSources[*].Alert.minimalSeverity",
+                "contains": "[parameters('minimalSeverity')]"
               }
             ]
           },
@@ -76,6 +85,9 @@
               "parameters": {
                 "emailSecurityContact": {
                   "value": "[parameters('emailSecurityContact')]"
+                },
+                "minimalSeverity": {
+                  "value": "[parameters('minimalSeverity')]"
                 }
               },
               "template": {
@@ -87,6 +99,12 @@
                     "metadata": {
                       "description": "Security contacts email address"
                     }
+                  },
+                  "minimalSeverity": {
+                    "type": "string",
+                    "metadata": {
+                      "description": "Minimal severity level reported"
+                    }
                   }
                 },
                 "variables": {},
@@ -94,19 +112,22 @@
                   {
                     "type": "Microsoft.Security/securityContacts",
                     "name": "default",
-                    "apiVersion": "2020-01-01-preview",
+                    "apiVersion": "2023-12-01-preview",
                     "properties": {
                       "emails": "[parameters('emailSecurityContact')]",
+                      "isEnabled": true,
                       "notificationsByRole": {
                         "state": "On",
                         "roles": [
                           "Owner"
                         ]
                       },
-                      "alertNotifications": {
-                        "state": "On",
-                        "minimalSeverity": "High"
-                      }
+                      "notificationsSources": [
+                        {
+                          "sourceType": "Alert",
+                          "minimalSeverity": "[parameters('minimalSeverity')]"
+                        }
+                      ]
                     }
                   }
                 ],
