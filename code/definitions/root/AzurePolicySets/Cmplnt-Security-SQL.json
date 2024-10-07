@@ -40,11 +40,16 @@
         }
       },
       "bringYourOwnDcr": {
-        "type": "String",
+        "type": "Boolean",
         "metadata": {
           "displayName": "Bring your own DCR",
           "description": "Enable or disable the use of a user-defined Data Collection Rule."
-        }
+        },
+        "allowedValues": [
+          true,
+          false
+        ],
+        "defaultValue": false
       },
       "dcrResourceId": {
         "type": "String",
@@ -86,7 +91,11 @@
           "displayName": "BYO User Assigned Managed Identity",
           "description": "Enable bring-your-own user assigned identity for Azure Monitor Agent."
         },
-        "defaultValue": ""
+        "allowedValues": [
+          true,
+          false
+        ],
+        "defaultValue": false
       },
       "userAssignedIdentityResourceId": {
         "type": "String",
