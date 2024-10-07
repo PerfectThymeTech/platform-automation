@@ -1,6 +1,6 @@
 {
   "type": "Microsoft.Authorization/policyDefinitions",
-  "name": "Deploy-Defender-SecurityContacts",
+  "name": "Dine-DefenderContacts",
   "properties": {
     "displayName": "Deploy Defender for Cloud Security Contacts",
     "description": "Deploy Defender for Cloud Security Contacts to receive alerts and notifications",
