@@ -55,8 +55,8 @@ resource "azurerm_windows_virtual_machine" "windows_virtual_machine" {
     storage_account_type      = "Standard_LRS"
     write_accelerator_enabled = false
   }
-  patch_assessment_mode = "ImageDefault"
-  patch_mode            = "AutomaticByPlatform"
+  # patch_assessment_mode = "ImageDefault"
+  # patch_mode            = "AutomaticByPlatform"
   # platform_fault_domain = -1
   priority            = "Regular"
   provision_vm_agent  = true
