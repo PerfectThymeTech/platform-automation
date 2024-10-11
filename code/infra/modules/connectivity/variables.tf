@@ -74,3 +74,24 @@ variable "management_group_root_id" {
     error_message = "Please specify a valid resource ID."
   }
 }
+
+variable "virtual_machine_admin_username" {
+  description = "Specifies the admin username of the jumpbox vm."
+  type        = string
+  sensitive   = false
+  default = "VmMainUser"
+  validation {
+    condition     = length(var.virtual_machine_admin_username) > 2
+    error_message = "Please specify a valid admin username."
+  }
+}
+
+variable "virtual_machine_admin_password" {
+  description = "Specifies the admin password of the jumpbox vm."
+  type        = string
+  sensitive   = true
+  validation {
+    condition     = length(var.virtual_machine_admin_password) > 2
+    error_message = "Please specify a valid admin password."
+  }
+}
