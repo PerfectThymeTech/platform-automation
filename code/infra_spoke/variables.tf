@@ -48,10 +48,11 @@ variable "management_group_name" {
 variable "vnet_spoke_details" {
   description = "Specifies the network configuration used for the spoke virtual networks."
   type = object({
-    enabled          = optional(bool, false)
-    name_prefix      = optional(string, "spoke-vnet")
-    address_prefixes = optional(list(string), [])
-    dns_servers      = optional(list(string), [])
+    enabled             = optional(bool, false)
+    name_prefix         = optional(string, "spoke-vnet")
+    address_prefixes    = optional(list(string), [])
+    dns_servers         = optional(list(string), [])
+    firewall_private_ip = string
   })
   sensitive = false
 }

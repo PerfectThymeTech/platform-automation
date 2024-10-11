@@ -79,7 +79,7 @@ variable "virtual_machine_admin_username" {
   description = "Specifies the admin username of the jumpbox vm."
   type        = string
   sensitive   = false
-  default = "VmMainUser"
+  default     = "VmMainUser"
   validation {
     condition     = length(var.virtual_machine_admin_username) > 2
     error_message = "Please specify a valid admin username."

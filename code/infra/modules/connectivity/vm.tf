@@ -29,51 +29,51 @@ resource "azurerm_windows_virtual_machine" "windows_virtual_machine" {
 
   additional_capabilities {
     hibernation_enabled = false
-    ultra_ssd_enabled = false
+    ultra_ssd_enabled   = false
   }
   # additional_unattend_content {
   #   content = ""
   #   setting = ""
   # }
-  admin_username = var.virtual_machine_admin_username
-  admin_password = var.virtual_machine_admin_password
-  allow_extension_operations = true
+  admin_username                                         = var.virtual_machine_admin_username
+  admin_password                                         = var.virtual_machine_admin_password
+  allow_extension_operations                             = true
   bypass_platform_safety_checks_on_user_schedule_enabled = false
-  computer_name = "jmpbx001"
-  custom_data = ""
+  computer_name                                          = "jmpbx001"
+  custom_data                                            = ""
   # disk_controller_type =
-  enable_automatic_updates = true
+  enable_automatic_updates   = true
   encryption_at_host_enabled = true
-  hotpatching_enabled = false
-  license_type = "None"
+  hotpatching_enabled        = false
+  license_type               = "None"
   network_interface_ids = [
     azurerm_network_interface.network_interface.id,
   ]
   os_disk {
-    name = "os-disk"
-    caching = "ReadWrite"
-    storage_account_type = "Standard_LRS"
+    name                      = "os-disk"
+    caching                   = "ReadWrite"
+    storage_account_type      = "Standard_LRS"
     write_accelerator_enabled = false
   }
   patch_assessment_mode = "ImageDefault"
-  patch_mode = "AutomaticByOS"
+  patch_mode            = "AutomaticByOS"
   platform_fault_domain = -1
-  priority = "Regular"
-  provision_vm_agent = true
-  reboot_setting = "IfRequired"
-  secure_boot_enabled = true
-  size = "Standard_DS2_v2"
+  priority              = "Regular"
+  provision_vm_agent    = true
+  reboot_setting        = "IfRequired"
+  secure_boot_enabled   = true
+  size                  = "Standard_DS2_v2"
   source_image_reference {
-    offer = "windows-11"
+    offer     = "windows-11"
     publisher = "microsoftwindowsdesktop"
-    sku = "win11-21h4-ent"
-    version = "latest"
+    sku       = "win11-21h4-ent"
+    version   = "latest"
   }
   termination_notification {
     enabled = false
   }
-  timezone = "UTC"
-  user_data = ""
+  timezone                          = "UTC"
+  user_data                         = ""
   vm_agent_platform_updates_enabled = true
-  vtpm_enabled = true
+  vtpm_enabled                      = true
 }

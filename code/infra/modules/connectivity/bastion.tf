@@ -17,5 +17,4 @@ resource "azurerm_bastion_host" "bastion_host" {
   shareable_link_enabled = true
   sku                    = "Standard"
   tunneling_enabled      = false
-  virtual_network_id     = azurerm_virtual_network.virtual_network_hub.id
 }
