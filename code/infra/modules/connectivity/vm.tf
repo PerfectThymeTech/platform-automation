@@ -43,7 +43,7 @@ resource "azurerm_windows_virtual_machine" "windows_virtual_machine" {
   # custom_data                                            = ""
   # disk_controller_type =
   enable_automatic_updates   = true
-  encryption_at_host_enabled = true
+  encryption_at_host_enabled = false # Must first be enabled at subscription level
   hotpatching_enabled        = false
   license_type               = "None"
   network_interface_ids = [
