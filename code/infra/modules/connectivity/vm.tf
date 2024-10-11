@@ -66,7 +66,7 @@ resource "azurerm_windows_virtual_machine" "windows_virtual_machine" {
   source_image_reference {
     offer     = "windows-11"
     publisher = "microsoftwindowsdesktop"
-    sku       = "win11-21h4-ent"
+    sku       = "win11-24h2-ent"
     version   = "latest"
   }
   termination_notification {
