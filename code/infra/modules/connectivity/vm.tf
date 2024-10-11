@@ -58,9 +58,9 @@ resource "azurerm_windows_virtual_machine" "windows_virtual_machine" {
   # patch_assessment_mode = "ImageDefault"
   # patch_mode            = "AutomaticByPlatform"
   # platform_fault_domain = -1
-  priority            = "Regular"
-  provision_vm_agent  = true
-  reboot_setting      = "IfRequired"
+  priority           = "Regular"
+  provision_vm_agent = true
+  # reboot_setting      = "IfRequired"
   secure_boot_enabled = true
   size                = "Standard_DS2_v2"
   source_image_reference {
