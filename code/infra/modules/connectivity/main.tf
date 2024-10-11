@@ -22,7 +22,7 @@ resource "azurerm_resource_group" "resource_group_bastion" {
   tags     = var.tags
 }
 
-resource "azurerm_resource_group" "resource_group_bastion" {
+resource "azurerm_resource_group" "resource_group_jmpbx" {
   name     = "${local.prefix}-jmpbx-rg"
   location = var.location
   tags     = var.tags

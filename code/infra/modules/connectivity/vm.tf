@@ -1,7 +1,7 @@
 resource "azurerm_network_interface" "network_interface" {
   name                = "${local.prefix}-nic001"
   location            = var.location
-  resource_group_name = azurerm_resource_group.resource_group_bastion.name
+  resource_group_name = azurerm_resource_group.resource_group_jmpbx.name
   tags                = var.tags
 
   accelerated_networking_enabled = false
@@ -21,7 +21,7 @@ resource "azurerm_network_interface" "network_interface" {
 resource "azurerm_windows_virtual_machine" "windows_virtual_machine" {
   name                = "${local.prefix}-jmpbx001"
   location            = var.location
-  resource_group_name = azurerm_resource_group.resource_group_bastion.name
+  resource_group_name = azurerm_resource_group.resource_group_jmpbx.name
   tags                = var.tags
   identity {
     type = "SystemAssigned"
