@@ -15,3 +15,9 @@ resource "azurerm_resource_group" "resource_group_network_manager" {
   location = var.location
   tags     = var.tags
 }
+
+resource "azurerm_resource_group" "resource_group_bastion" {
+  name     = "${local.prefix}-bstn-rg"
+  location = var.location
+  tags     = var.tags
+}
