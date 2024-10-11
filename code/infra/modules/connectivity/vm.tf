@@ -40,7 +40,7 @@ resource "azurerm_windows_virtual_machine" "windows_virtual_machine" {
   allow_extension_operations                             = true
   bypass_platform_safety_checks_on_user_schedule_enabled = false
   computer_name                                          = "jmpbx001"
-  custom_data                                            = ""
+  # custom_data                                            = ""
   # disk_controller_type =
   enable_automatic_updates   = true
   encryption_at_host_enabled = true
@@ -57,12 +57,12 @@ resource "azurerm_windows_virtual_machine" "windows_virtual_machine" {
   }
   patch_assessment_mode = "ImageDefault"
   patch_mode            = "AutomaticByOS"
-  platform_fault_domain = -1
-  priority              = "Regular"
-  provision_vm_agent    = true
-  reboot_setting        = "IfRequired"
-  secure_boot_enabled   = true
-  size                  = "Standard_DS2_v2"
+  # platform_fault_domain = -1
+  priority            = "Regular"
+  provision_vm_agent  = true
+  reboot_setting      = "IfRequired"
+  secure_boot_enabled = true
+  size                = "Standard_DS2_v2"
   source_image_reference {
     offer     = "windows-11"
     publisher = "microsoftwindowsdesktop"
@@ -72,8 +72,8 @@ resource "azurerm_windows_virtual_machine" "windows_virtual_machine" {
   termination_notification {
     enabled = false
   }
-  timezone                          = "UTC"
-  user_data                         = ""
+  timezone = "UTC"
+  # user_data                         = ""
   vm_agent_platform_updates_enabled = true
   vtpm_enabled                      = true
 }
